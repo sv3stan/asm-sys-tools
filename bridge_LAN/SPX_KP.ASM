@@ -14,34 +14,34 @@ buffer                               db 546 dup(0)
 number_packet                        db 0
 error_flag                           db 0
 ;------------------------------------------------------------------------
-spx_load                             db           'SPX §‡†©¢•‡ „·‚†≠Æ¢´•≠'
-info db           'äÆ´®Á•·‚¢Æ ™†≠†´Æ¢: ¨†™·®¨†´Ï≠Æ•      §Æ·‚„Ø≠Æ•       '
-version                              db              'Ç•‡·®Ô §‡†©¢•‡† SPX'
+spx_load                             db           'SPX –¥—Ä–∞–π–≤–µ—Ä —É—Å—Ç–∞–Ω–æ–≤–ª–µ–Ω'
+info db           '–ö–æ–ª–∏—á–µ—Å—Ç–≤–æ –∫–∞–Ω–∞–ª–æ–≤: –º–∞–∫—Å–∏–º–∞–ª—å–Ω–æ–µ      –¥–æ—Å—Ç—É–ø–Ω–æ–µ       '
+version                              db              '–í–µ—Ä—Å–∏—è –¥—Ä–∞–π–≤–µ—Ä–∞ SPX'
 ;-------------------------------------------------------------------------
 max_channell                         dw 0
 free_channell                        dw 0
 nversion                             dw 0
 
-resiver                              db 'è‡®≠Ô‚Æ Ø†™•‚Æ¢ · ‰†©´Æ¨'
+resiver                              db '–ü—Ä–∏–Ω—è—Ç–æ –ø–∞–∫–µ—Ç–æ–≤ —Å —Ñ–∞–π–ª–æ–º'
 cols                                 db 35
 plus                                 db '+'
-msg_spx                              db 'ùíé - ëíÄçñàü   èêéíéäéãÄ   SPX.'
-br_spx 				     db 'ë¢ÔßÏ · ¨Æ·‚Æ¨  „·‚†≠Æ¢´•≠†.    '
-req_file                             DB 'è•‡•§†≠ ß†Ø‡Æ· ≠† ‰†©´ · ®¨•≠•¨'
-req_file_answer                      db 'èÆ´„Á•≠Æ ØÆ§‚¢•‡¶§•≠®• ≠† ‰†©´ '
-NOT_found_file                       DB 'ç† ·•‡¢•‡• ≠•‚ ‰†©´†'
+msg_spx                              db '–≠–¢–û - –°–¢–ê–ù–¶–ò–Ø   –ü–†–û–¢–û–ö–û–õ–ê   SPX.'
+br_spx 				     db '–°–≤—è–∑—å —Å –º–æ—Å—Ç–æ–º  —É—Å—Ç–∞–Ω–æ–≤–ª–µ–Ω–∞.    '
+req_file                             DB '–ü–µ—Ä–µ–¥–∞–Ω –∑–∞–ø—Ä–æ—Å –Ω–∞ —Ñ–∞–π–ª —Å –∏–º–µ–Ω–µ–º'
+req_file_answer                      db '–ü–æ–ª—É—á–µ–Ω–æ –ø–æ–¥—Ç–≤–µ—Ä–∂–¥–µ–Ω–∏–µ –Ω–∞ —Ñ–∞–π–ª '
+NOT_found_file                       DB '–ù–∞ —Å–µ—Ä–≤–µ—Ä–µ –Ω–µ—Ç —Ñ–∞–π–ª–∞'
 
-ipx_load_error_msg                   DB 'IPX §‡†©¢•‡ ≠• „·‚†≠Æ¢´•≠.      '
-SPX_unload                           db 'SPX §‡†©¢•‡ ≠• „·‚†≠Æ¢´•≠.      '
-error_03h                            db 'èÆ´• IN_USE ® ÆË®°™† ‰„≠™Ê®® 03h'
-error_04h                            db 'èÆ´• IN_USE ® ÆË®°™† ‰„≠™Ê®® 04h'
-error_12h                            db 'èÆ´• IN_USE ® ÆË®°™† ‰„≠™Ê®® 12h'
-error_11h                            db 'èÆ´• IN_USE ® ÆË®°™† ‰„≠™Ê®® 11h'
-error_17h                            db 'èÆ´• IN_USE ® ÆË®°™† ‰„≠™Ê®® 17h'
-error_16h                            db 'èÆ´• IN_USE ® ÆË®°™† ‰„≠™Ê®® 16h'
-error_13h                            db 'èÆ´• IN_USE ® ÆË®°™† ‰„≠™Ê®® 13h'
-file_exist 		             DB 'í†™Æ© ‰†©´ „¶• ·„È•·‚¢„•‚'
-file_bad_msg			     DB 'ç•¢•‡≠Î• Ø†‡†¨•‚‡Î'
+ipx_load_error_msg                   DB 'IPX –¥—Ä–∞–π–≤–µ—Ä –Ω–µ —É—Å—Ç–∞–Ω–æ–≤–ª–µ–Ω.      '
+SPX_unload                           db 'SPX –¥—Ä–∞–π–≤–µ—Ä –Ω–µ —É—Å—Ç–∞–Ω–æ–≤–ª–µ–Ω.      '
+error_03h                            db '–ü–æ–ª–µ IN_USE –∏ –æ—à–∏–±–∫–∞ —Ñ—É–Ω–∫—Ü–∏–∏ 03h'
+error_04h                            db '–ü–æ–ª–µ IN_USE –∏ –æ—à–∏–±–∫–∞ —Ñ—É–Ω–∫—Ü–∏–∏ 04h'
+error_12h                            db '–ü–æ–ª–µ IN_USE –∏ –æ—à–∏–±–∫–∞ —Ñ—É–Ω–∫—Ü–∏–∏ 12h'
+error_11h                            db '–ü–æ–ª–µ IN_USE –∏ –æ—à–∏–±–∫–∞ —Ñ—É–Ω–∫—Ü–∏–∏ 11h'
+error_17h                            db '–ü–æ–ª–µ IN_USE –∏ –æ—à–∏–±–∫–∞ —Ñ—É–Ω–∫—Ü–∏–∏ 17h'
+error_16h                            db '–ü–æ–ª–µ IN_USE –∏ –æ—à–∏–±–∫–∞ —Ñ—É–Ω–∫—Ü–∏–∏ 16h'
+error_13h                            db '–ü–æ–ª–µ IN_USE –∏ –æ—à–∏–±–∫–∞ —Ñ—É–Ω–∫—Ü–∏–∏ 13h'
+file_exist 		             DB '–¢–∞–∫–æ–π —Ñ–∞–π–ª —É–∂–µ —Å—É—â–µ—Å—Ç–≤—É–µ—Ç'
+file_bad_msg			     DB '–ù–µ–≤–µ—Ä–Ω—ã–µ –ø–∞—Ä–∞–º–µ—Ç—Ä—ã'
 counts db 0
 ;-------------------------------------------------------------------------
 END_work                             DB 0
@@ -56,7 +56,7 @@ count				     DB 0
 adres   			     DW 0
 SIZE_FRG			     DW 0
 number_NAME_file		     DB 0
-file_point                           DW 0;„™†ß†‚•´Ï ≠† ®¨Ô ‰†©´†
+file_point                           DW 0;—É–∫–∞–∑–∞—Ç–µ–ª—å –Ω–∞ –∏–º—è —Ñ–∞–π–ª–∞
 net_adres                            DB 4 dup(0)
                                      DB 6 dup(255)
 ;--------------------------------------------------------------------
@@ -100,7 +100,7 @@ wells:
 PUSH CS
 POP  ES
 ;--------------------------------------------------------------------
-CALL comstroc				;¢Î§•´•≠®• ®¨•≠ ‰†©´Æ¢
+CALL comstroc				;–≤—ã–¥–µ–ª–µ–Ω–∏–µ –∏–º–µ–Ω —Ñ–∞–π–ª–æ–≤
 CMP  error_code,0
 JE   well1
 JMP  NEAR PTR quit
@@ -113,23 +113,23 @@ MOV  DX,0223h
 MOV  CX,13
 MOV  BP,OFFSET filename1
 CALL OUT_date
-MOV  BX,IPXGetInternetworkAddress	;ØÆ´„Á®‚Ï †§‡•· ·‚†≠Ê®®
-MOV  SI,OFFSET pbl_IPX_transmit[18]	;¢ ·•‚® ≠† ™Æ‚Æ‡Æ© ‡†°Æ‚†•‚
-CALL [API_IPX]				;Ì‚† Ø‡Æ£‡†¨¨†
+MOV  BX,IPXGetInternetworkAddress	;–ø–æ–ª—É—á–∏—Ç—å –∞–¥—Ä–µ—Å —Å—Ç–∞–Ω—Ü–∏–∏
+MOV  SI,OFFSET pbl_IPX_transmit[18]	;–≤ —Å–µ—Ç–∏ –Ω–∞ –∫–æ—Ç–æ—Ä–æ–π —Ä–∞–±–æ—Ç–∞–µ—Ç
+CALL [API_IPX]				;—ç—Ç–∞ –ø—Ä–æ–≥—Ä–∞–º–º–∞
 ;--------------------------------------------------------------------
 mov  dx,7878h
 call ipx_socket_open
-mov  ipx_socket,dx	 		;≠Æ¨•‡ ·Æ™•‚† 6666h
+mov  ipx_socket,dx	 		;–Ω–æ–º–µ—Ä —Å–æ–∫–µ—Ç–∞ 6666h
 mov  dx,5858h
 call ipx_socket_open
-mov  spx_socket,dx			;≠Æ¨•‡ ·Æ™•‚† 4444h
+mov  spx_socket,dx			;–Ω–æ–º–µ—Ä —Å–æ–∫–µ—Ç–∞ 4444h
 ;--------------------------------------------------------------------
 CLD
 MOV  CX,6
 MOV  DI,OFFSET ecb[28]
-MOV  SI,OFFSET net_adres[4]		;ß†ØÆ´≠Ô•¨ ØÆ´•
-REP  MOVSB				;ImmAddress ¢ ECB[28]
-CLD					;Ë®‡Æ™Æ¢•È†‚•´Ï≠Î¨ †§‡•·Æ¨
+MOV  SI,OFFSET net_adres[4]		;–∑–∞–ø–æ–ª–Ω—è–µ–º –ø–æ–ª–µ
+REP  MOVSB				;ImmAddress –≤ ECB[28]
+CLD					;—à–∏—Ä–æ–∫–æ–≤–µ—â–∞—Ç–µ–ª—å–Ω—ã–º –∞–¥—Ä–µ—Å–æ–º
 MOV  CX,10
 MOV  DI,OFFSET pbl_IPX_transmit[6]
 MOV  SI,OFFSET net_adres
@@ -138,7 +138,7 @@ REP  MOVSB
 MOV  BX,13
 MOV  DX,OFFSET filename1
 MOV  CX,02h
-CALL ipx_send				;ØÆ·Î´™† Ø†™•‚†
+CALL ipx_send				;–ø–æ—Å—ã–ª–∫–∞ –ø–∞–∫–µ—Ç–∞
 mov  bp,offset error_03h
 mov  si,offset ecb
 CALL waitings
@@ -150,10 +150,10 @@ ready:
 MOV  BX,512
 MOV  CX,2
 MOV  DX,OFFSET filename3
-CALL ipx_listen				;Ø‡®•¨ Ø†™•‚†
+CALL ipx_listen				;–ø—Ä–∏–µ–º –ø–∞–∫–µ—Ç–∞
 mov  bp,offset error_04h
 mov  si,offset ecb
-CALL waitings				;Æ¶®§†≠®• Ø‡®ÂÆ§† Ø†™•‚†
+CALL waitings				;–æ–∂–∏–¥–∞–Ω–∏–µ –ø—Ä–∏—Ö–æ–¥–∞ –ø–∞–∫–µ—Ç–∞
 cmp  error_flag,1
 jne  ready1
 jmp  near ptr bad
@@ -189,7 +189,7 @@ JMP  repeater
 cont8:
 MOV  DX,0402h
 MOV  CX,20
-MOV  BP,OFFSET NOT_found_file;≠† ·•‡¢•‡• ‰†©´ ≠• ≠†©§•≠
+MOV  BP,OFFSET NOT_found_file;–Ω–∞ —Å–µ—Ä–≤–µ—Ä–µ —Ñ–∞–π–ª –Ω–µ –Ω–∞–π–¥–µ–Ω
 CALL OUT_date
 MOV  DX,0417h
 MOV  CX,13
@@ -265,9 +265,9 @@ je   next
 bad:
 call close_file
 mov  dx,ipx_socket
-call ipx_socket_close   		;≠Æ¨•‡ ·Æ™•‚† 7777h
+call ipx_socket_close   		;–Ω–æ–º–µ—Ä —Å–æ–∫–µ—Ç–∞ 7777h
 mov  dx,spx_socket
-call ipx_socket_close			;≠Æ¨•‡ ·Æ™•‚† 5656h
+call ipx_socket_close			;–Ω–æ–º–µ—Ä —Å–æ–∫–µ—Ç–∞ 5656h
 quit:
 MOV  AH,4ch
 INT  21h
@@ -284,7 +284,7 @@ cont:	MOV  number_NAME_file,1
 	MOV [DI-1],BL
 	LEA CX,filename1
 	MOV DI,0
-;®¨Ô  1-£Æ ‰†©´†
+;–∏–º—è  1-–≥–æ —Ñ–∞–π–ª–∞
 	LEA SI,comspec
 c2:	MOV BX,ES:[SI]
 	CMP BL,32
@@ -298,7 +298,7 @@ c4:	MOV OFFSET filename1[DI],BL
 	JMP c2
 c3:	INC SI
 	XOR DI,DI
-;®¨Ô 2-£Æ ‰†©´†
+;–∏–º—è 2-–≥–æ —Ñ–∞–π–ª–∞
 
 c6:	MOV BX,ES:[SI]
 	CMP BL,32
@@ -332,7 +332,7 @@ c9:     MOV  file_point,DX
         JC   quit_comstroc
         MOV  CX,25
         MOV  DX,1402h
-        MOV  BP,OFFSET file_exist;‚†™Æ© ‰†©´ •·‚Ï
+        MOV  BP,OFFSET file_exist;—Ç–∞–∫–æ–π —Ñ–∞–π–ª –µ—Å—Ç—å
         CALL OUT_date
 quit_comstroc:RET
 comstroc ENDP      
@@ -365,9 +365,9 @@ error:MOV  DX,1402h
 exit: RET
 ipx_load ENDP
 creat_file      PROC    NEAR
-		PUSHA   		;·Æß§†≠®• ‰†©´†
-		MOV     AH,3ch		;Ø†‡†¨•‚‡ †§‡•· ®¨•≠® ‰†©´†
-		MOV     CX,0h		;¢ ‡•£®·‚‡ DX
+		PUSHA   		;—Å–æ–∑–¥–∞–Ω–∏–µ —Ñ–∞–π–ª–∞
+		MOV     AH,3ch		;–ø–∞—Ä–∞–º–µ—Ç—Ä –∞–¥—Ä–µ—Å –∏–º–µ–Ω–∏ —Ñ–∞–π–ª–∞
+		MOV     CX,0h		;–≤ —Ä–µ–≥–∏—Å—Ç—Ä DX
 		INT     21h
 		MOV     handle,AX
 		POPA
@@ -375,8 +375,8 @@ creat_file      PROC    NEAR
 creat_file	ENDP	 		
 open_file       PROC
                 PUSHA
-		MOV	AH,3dh		;Ø†‡†¨•‚‡ †§‡•· ®¨•≠® ‰†©´†
-		MOV	AL,01h		;¢ ‡•£®·‚‡ DX
+		MOV	AH,3dh		;–ø–∞—Ä–∞–º–µ—Ç—Ä –∞–¥—Ä–µ—Å –∏–º–µ–Ω–∏ —Ñ–∞–π–ª–∞
+		MOV	AL,01h		;–≤ —Ä–µ–≥–∏—Å—Ç—Ä DX
 		INT	21h
 		MOV	handle,AX
 		POPA    
@@ -384,7 +384,7 @@ open_file       PROC
 open_file       ENDP
 write_file      PROC
 		PUSHA
-;-------------------ß†Ø®·Ï ¢ ‰†©´------------------------------------		
+;-------------------–∑–∞–ø–∏—Å—å –≤ —Ñ–∞–π–ª------------------------------------		
 		MOV	CX,long
 		MOV     AH,40h
 		MOV	BX,handle
@@ -404,26 +404,26 @@ Close_file	PROC 	NEAR
 Close_file	ENDP	
 ipx_send PROC
 ;--------------------------------------------------------------------
-XOR  AX,AX              	     	;ØÆ§£Æ‚Æ¢™† °´Æ™† ECB
-MOV  WORD PTR ECB[6],AX			;§´Ô Ø•‡•§†Á® Ø†™•‚† ·•‡¢•‡„
+XOR  AX,AX              	     	;–ø–æ–¥–≥–æ—Ç–æ–≤–∫–∞ –±–ª–æ–∫–∞ ECB
+MOV  WORD PTR ECB[6],AX			;–¥–ª—è –ø–µ—Ä–µ–¥–∞—á–∏ –ø–∞–∫–µ—Ç–∞ —Å–µ—Ä–≤–µ—Ä—É
 MOV  WORD PTR ECB[4],AX
 mov  ax,ipx_socket
 mov  word ptr ecb[10],ax
 mov  word ptr pbl_ipx_transmit[28],ax
 ;--------------------------------------------------------------------
-MOV  WORD PTR ECB[34],CX		;á†ØÆ´≠•≠®• ØÆ´Ô FragmentCnt ¢ ÖëÇ
+MOV  WORD PTR ECB[34],CX		;–ó–∞–ø–æ–ª–Ω–µ–Ω–∏–µ –ø–æ–ª—è FragmentCnt –≤ –ï–°–í
 ;--------------------------------------------------------------------
-MOV  WORD PTR ecb[38],CS		;ØÆ´• Adress 1 ·•£¨•≠‚
-MOV  WORD PTR ecb[36],OFFSET pbl_IPX_transmit 	;ØÆ´• Adress 1 ·¨•È•≠®•
-MOV  WORD PTR ecb[40],30		;ØÆ´• SIZE 1
+MOV  WORD PTR ecb[38],CS		;–ø–æ–ª–µ Adress 1 —Å–µ–≥–º–µ–Ω—Ç
+MOV  WORD PTR ecb[36],OFFSET pbl_IPX_transmit 	;–ø–æ–ª–µ Adress 1 —Å–º–µ—â–µ–Ω–∏–µ
+MOV  WORD PTR ecb[40],30		;–ø–æ–ª–µ SIZE 1
 ;--------------------------------------------------------------------
-MOV  WORD PTR ecb[44],CS		;ØÆ´• Adress 2 ·•£¨•≠‚
-MOV  WORD PTR ecb[42],DX        	;ØÆ´• Adress 2 ·¨•È•≠®•
-MOV  WORD PTR ecb[46],BX  		;ØÆ´• SIZE 2
-;-----------------------		;ØÆ§£Æ‚Æ¢™† IPX ß†£Æ´Æ¢™†
-MOV  pbl_IPX_transmit[5],4		;‚®Ø Ø†™•‚†
-;-------------------------------	;ß†ØÆ´≠•≠®• ØÆ´Ô 
-MOV  AX,7777h				;destsocket ¢ ß†£Æ´Æ¢™• IPX
+MOV  WORD PTR ecb[44],CS		;–ø–æ–ª–µ Adress 2 —Å–µ–≥–º–µ–Ω—Ç
+MOV  WORD PTR ecb[42],DX        	;–ø–æ–ª–µ Adress 2 —Å–º–µ—â–µ–Ω–∏–µ
+MOV  WORD PTR ecb[46],BX  		;–ø–æ–ª–µ SIZE 2
+;-----------------------		;–ø–æ–¥–≥–æ—Ç–æ–≤–∫–∞ IPX –∑–∞–≥–æ–ª–æ–≤–∫–∞
+MOV  pbl_IPX_transmit[5],4		;—Ç–∏–ø –ø–∞–∫–µ—Ç–∞
+;-------------------------------	;–∑–∞–ø–æ–ª–Ω–µ–Ω–∏–µ –ø–æ–ª—è 
+MOV  AX,7777h				;destsocket –≤ –∑–∞–≥–æ–ª–æ–≤–∫–µ IPX
 MOV  WORD PTR pbl_IPX_transmit[16],AX	;
 ;--------------------------------------------------------------------
 MOV  BX,IPXSendPacket
@@ -439,30 +439,30 @@ MOV  WORD PTR ECB[4],AX
 mov  ax,ipx_socket
 mov  word ptr ecb[10],ax
 ;--------------------------------------------------------------------
-MOV  WORD PTR ECB[34],CX  		;á†ØÆ´≠•≠®• ØÆ´Ô FragmentCnt ¢ ÖëÇ
+MOV  WORD PTR ECB[34],CX  		;–ó–∞–ø–æ–ª–Ω–µ–Ω–∏–µ –ø–æ–ª—è FragmentCnt –≤ –ï–°–í
 ;--------------------------------------------------------------------
-MOV  WORD PTR ecb[36],OFFSET pbl_ipx_resiver	;ØÆ´• Adress ·•£¨•≠‚
+MOV  WORD PTR ecb[36],OFFSET pbl_ipx_resiver	;–ø–æ–ª–µ Adress —Å–µ–≥–º–µ–Ω—Ç
 MOV  WORD PTR ECB[38],CS
-MOV  WORD PTR ecb[40],30		;ØÆ´• SIZE
+MOV  WORD PTR ecb[40],30		;–ø–æ–ª–µ SIZE
 ;--------------------------------------------------------------------
-MOV  WORD PTR ecb[42],DX		;ØÆ´• Adress ·•£¨•≠‚
+MOV  WORD PTR ecb[42],DX		;–ø–æ–ª–µ Adress —Å–µ–≥–º–µ–Ω—Ç
 MOV  WORD PTR ECB[44],CS
-MOV  WORD PTR ecb[46],BX		;ØÆ´• SIZE
+MOV  WORD PTR ecb[46],BX		;–ø–æ–ª–µ SIZE
 ;--------------------------------------------------------------------
-MOV  BX,IPXListen			;¢ÎßÆ¢ ‰„≠™Ê®® Æ¶®§†≠®Ô Ø†™•‚† Æ‚
-MOV  SI,OFFSET ECB			;Ø•‡•§†ÓÈ•© ·‚†≠Ê®®
+MOV  BX,IPXListen			;–≤—ã–∑–æ–≤ —Ñ—É–Ω–∫—Ü–∏–∏ –æ–∂–∏–¥–∞–Ω–∏—è –ø–∞–∫–µ—Ç–∞ –æ—Ç
+MOV  SI,OFFSET ECB			;–ø–µ—Ä–µ–¥–∞—é—â–µ–π —Å—Ç–∞–Ω—Ü–∏–∏
 CALL [API_IPX]
 RET					;----------------------------
 ipx_listen ENDP	
 IPX_socket_open proc
 MOV  BX,IPXOpenSocket
 MOV  AL,0ffh
-CALL [API_IPX]				;Æ‚™‡Î¢†•¨ ·Æ™•‚
+CALL [API_IPX]				;–æ—Ç–∫—Ä—ã–≤–∞–µ–º —Å–æ–∫–µ—Ç
 ret
 IPX_socket_open endp
 IPX_socket_close proc
 MOV  BX,IPXcloseSocket
-CALL [API_IPX]				;Æ‚™‡Î¢†•¨ ·Æ™•‚
+CALL [API_IPX]				;–æ—Ç–∫—Ä—ã–≤–∞–µ–º —Å–æ–∫–µ—Ç
 ret
 IPX_socket_close endp
 SPX_listen_for_sequenced_packet proc
@@ -473,16 +473,16 @@ MOV  si[4],AX
 mov  ax,SPX_socket
 mov  si[10],ax
 ;--------------------------------------------------------------------
-MOV  si[34],CX  	;á†ØÆ´≠•≠®• ØÆ´Ô FragmentCnt ¢ ÖëÇ
+MOV  si[34],CX  	;–ó–∞–ø–æ–ª–Ω–µ–Ω–∏–µ –ø–æ–ª—è FragmentCnt –≤ –ï–°–í
 ;--------------------------------------------------------------------
-MOV  si[36],OFFSET pbl_spx_resiver	;ØÆ´• Adress ·•£¨•≠‚
+MOV  si[36],OFFSET pbl_spx_resiver	;–ø–æ–ª–µ Adress —Å–µ–≥–º–µ–Ω—Ç
 MOV  si[38],CS
 mov  ax,42
-MOV  si[40],ax		;ØÆ´• SIZE
+MOV  si[40],ax		;–ø–æ–ª–µ SIZE
 ;--------------------------------------------------------------------
-MOV  si[42],DX		;ØÆ´• Adress ·•£¨•≠‚
+MOV  si[42],DX		;–ø–æ–ª–µ Adress —Å–µ–≥–º–µ–Ω—Ç
 MOV  si[44],CS
-MOV  si[46],BX		;ØÆ´• SIZE
+MOV  si[46],BX		;–ø–æ–ª–µ SIZE
 mov  bx,SPXListenForSequencedPacket
 call [API_IPX]
 popa
@@ -497,16 +497,16 @@ MOV  si[4],AX
 mov  ax,SPX_socket
 mov  si[10],ax
 ;--------------------------------------------------------------------
-MOV  si[34],CX  	;á†ØÆ´≠•≠®• ØÆ´Ô FragmentCnt ¢ ÖëÇ
+MOV  si[34],CX  	;–ó–∞–ø–æ–ª–Ω–µ–Ω–∏–µ –ø–æ–ª—è FragmentCnt –≤ –ï–°–í
 ;--------------------------------------------------------------------
-MOV  si[36],OFFSET pbl_spx_resiver	;ØÆ´• Adress ·•£¨•≠‚
+MOV  si[36],OFFSET pbl_spx_resiver	;–ø–æ–ª–µ Adress —Å–µ–≥–º–µ–Ω—Ç
 MOV  si[38],CS
 mov  ax,42
-MOV  si[40],ax		;ØÆ´• SIZE
+MOV  si[40],ax		;–ø–æ–ª–µ SIZE
 ;--------------------------------------------------------------------
-MOV  si[42],DX		;ØÆ´• Adress ·•£¨•≠‚
+MOV  si[42],DX		;–ø–æ–ª–µ Adress —Å–µ–≥–º–µ–Ω—Ç
 MOV  si[44],CS
-MOV  si[46],BX		;ØÆ´• SIZE
+MOV  si[46],BX		;–ø–æ–ª–µ SIZE
 mov  al,10h
 mov  ah,0ffh
 mov  bx,SPXListenForConnection
@@ -541,7 +541,7 @@ push  es
       mov  al,es:[417h]
 pop   es      
       cmp  al,5
-JNE  waitings1		;Æ¶®§†≠®• Ø‡®ÂÆ§† Ø†™•‚†
+JNE  waitings1		;–æ–∂–∏–¥–∞–Ω–∏–µ –ø—Ä–∏—Ö–æ–¥–∞ –ø–∞–∫–µ—Ç–∞
 mov  error_flag,1
 wait_quit:
 popa
