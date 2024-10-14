@@ -5,35 +5,35 @@ ASSUME CS:cseg,DS:cseg
 ORG 100h
 begin:JMP start
 ;------------------------------------------------------------------------
-spx_load                             db           'SPX драйвер установлен'
-info db           'Количество каналов: максимальное      доступное       '
-version                              db              'Версия драйвера SPX'
+spx_load                             db           'SPX ╨┤╤А╨░╨╣╨▓╨╡╤А ╤Г╤Б╤В╨░╨╜╨╛╨▓╨╗╨╡╨╜'
+info db           '╨Ъ╨╛╨╗╨╕╤З╨╡╤Б╤В╨▓╨╛ ╨║╨░╨╜╨░╨╗╨╛╨▓: ╨╝╨░╨║╤Б╨╕╨╝╨░╨╗╤М╨╜╨╛╨╡      ╨┤╨╛╤Б╤В╤Г╨┐╨╜╨╛╨╡       '
+version                              db              '╨Т╨╡╤А╤Б╨╕╤П ╨┤╤А╨░╨╣╨▓╨╡╤А╨░ SPX'
 ;-------------------------------------------------------------------------
 time                                 dw 5
 exit_flag                            db 0
 max_channell                         dw 0
 free_channell                        dw 0
 nversion                             dw 0
-retranslation                        db 'Ретранслировано пакетов'
-retru db 'пакетов ретранслировано'
+retranslation                        db '╨а╨╡╤В╤А╨░╨╜╤Б╨╗╨╕╤А╨╛╨▓╨░╨╜╨╛ ╨┐╨░╨║╨╡╤В╨╛╨▓'
+retru db '╨┐╨░╨║╨╡╤В╨╛╨▓ ╤А╨╡╤В╤А╨░╨╜╤Б╨╗╨╕╤А╨╛╨▓╨░╨╜╨╛'
 cols                                 db 28
 plus                                 db '+'
-error_open_file                      DB 'Невозможно открыть файл         '
-req_file                             DB 'Ретранслирован   запрос на  файл' 
-req_file_rk                          DB 'Ретранслирован   ответ  на  файл' 
-msg_bridge                           db 'ЭТО - СТАНЦИЯ МОСТ.'
-ipx_load_error_msg                   DB 'IPX драйвер не установлен.      '
-SPX_unload                           db 'SPX драйвер не установлен.      '
-spx_br                               db 'Связь с станцией SPX установлена'
-ipx_br                               db 'Связь с станцией IPX установлена'
-BEGIN_transmit              db 'Для начала передачи нажмите любую клавишу'
-error_03h                            db 'Поле IN_USE и ошибка функции 03h'
-error_04h                            db 'Поле IN_USE и ошибка функции 04h'
-error_12h                            db 'Поле IN_USE и ошибка функции 12h'
-error_11h                            db 'Поле IN_USE и ошибка функции 11h'
-error_17h                            db 'Поле IN_USE и ошибка функции 17h'
-error_16h                            db 'Поле IN_USE и ошибка функции 16h'
-error_13h                            db 'Поле IN_USE и ошибка функции 13h'
+error_open_file                      DB '╨Э╨╡╨▓╨╛╨╖╨╝╨╛╨╢╨╜╨╛ ╨╛╤В╨║╤А╤Л╤В╤М ╤Д╨░╨╣╨╗         '
+req_file                             DB '╨а╨╡╤В╤А╨░╨╜╤Б╨╗╨╕╤А╨╛╨▓╨░╨╜   ╨╖╨░╨┐╤А╨╛╤Б ╨╜╨░  ╤Д╨░╨╣╨╗' 
+req_file_rk                          DB '╨а╨╡╤В╤А╨░╨╜╤Б╨╗╨╕╤А╨╛╨▓╨░╨╜   ╨╛╤В╨▓╨╡╤В  ╨╜╨░  ╤Д╨░╨╣╨╗' 
+msg_bridge                           db '╨н╨в╨Ю - ╨б╨в╨Р╨Э╨ж╨Ш╨п ╨Ь╨Ю╨б╨в.'
+ipx_load_error_msg                   DB 'IPX ╨┤╤А╨░╨╣╨▓╨╡╤А ╨╜╨╡ ╤Г╤Б╤В╨░╨╜╨╛╨▓╨╗╨╡╨╜.      '
+SPX_unload                           db 'SPX ╨┤╤А╨░╨╣╨▓╨╡╤А ╨╜╨╡ ╤Г╤Б╤В╨░╨╜╨╛╨▓╨╗╨╡╨╜.      '
+spx_br                               db '╨б╨▓╤П╨╖╤М ╤Б ╤Б╤В╨░╨╜╤Ж╨╕╨╡╨╣ SPX ╤Г╤Б╤В╨░╨╜╨╛╨▓╨╗╨╡╨╜╨░'
+ipx_br                               db '╨б╨▓╤П╨╖╤М ╤Б ╤Б╤В╨░╨╜╤Ж╨╕╨╡╨╣ IPX ╤Г╤Б╤В╨░╨╜╨╛╨▓╨╗╨╡╨╜╨░'
+BEGIN_transmit              db '╨Ф╨╗╤П ╨╜╨░╤З╨░╨╗╨░ ╨┐╨╡╤А╨╡╨┤╨░╤З╨╕ ╨╜╨░╨╢╨╝╨╕╤В╨╡ ╨╗╤О╨▒╤Г╤О ╨║╨╗╨░╨▓╨╕╤И╤Г'
+error_03h                            db '╨Я╨╛╨╗╨╡ IN_USE ╨╕ ╨╛╤И╨╕╨▒╨║╨░ ╤Д╤Г╨╜╨║╤Ж╨╕╨╕ 03h'
+error_04h                            db '╨Я╨╛╨╗╨╡ IN_USE ╨╕ ╨╛╤И╨╕╨▒╨║╨░ ╤Д╤Г╨╜╨║╤Ж╨╕╨╕ 04h'
+error_12h                            db '╨Я╨╛╨╗╨╡ IN_USE ╨╕ ╨╛╤И╨╕╨▒╨║╨░ ╤Д╤Г╨╜╨║╤Ж╨╕╨╕ 12h'
+error_11h                            db '╨Я╨╛╨╗╨╡ IN_USE ╨╕ ╨╛╤И╨╕╨▒╨║╨░ ╤Д╤Г╨╜╨║╤Ж╨╕╨╕ 11h'
+error_17h                            db '╨Я╨╛╨╗╨╡ IN_USE ╨╕ ╨╛╤И╨╕╨▒╨║╨░ ╤Д╤Г╨╜╨║╤Ж╨╕╨╕ 17h'
+error_16h                            db '╨Я╨╛╨╗╨╡ IN_USE ╨╕ ╨╛╤И╨╕╨▒╨║╨░ ╤Д╤Г╨╜╨║╤Ж╨╕╨╕ 16h'
+error_13h                            db '╨Я╨╛╨╗╨╡ IN_USE ╨╕ ╨╛╤И╨╕╨▒╨║╨░ ╤Д╤Г╨╜╨║╤Ж╨╕╨╕ 13h'
 ;-------------------------------------------------------------------------
 lines                                DB 6
 END_work                             DB 0
@@ -90,15 +90,15 @@ wells:
 
 PUSH CS
 POP  ES
-MOV  BX,IPXGetInternetworkAddress	;получить адрес станции
-MOV  SI,OFFSET pbl_IPX_transmit_spx[18]	;в сети на которой работает
-CALL [API_IPX]				;эта программа
+MOV  BX,IPXGetInternetworkAddress	;╨┐╨╛╨╗╤Г╤З╨╕╤В╤М ╨░╨┤╤А╨╡╤Б ╤Б╤В╨░╨╜╤Ж╨╕╨╕
+MOV  SI,OFFSET pbl_IPX_transmit_spx[18]	;╨▓ ╤Б╨╡╤В╨╕ ╨╜╨░ ╨║╨╛╤В╨╛╤А╨╛╨╣ ╤А╨░╨▒╨╛╤В╨░╨╡╤В
+CALL [API_IPX]				;╤Н╤В╨░ ╨┐╤А╨╛╨│╤А╨░╨╝╨╝╨░
 mov  dx,7777h
 call ipx_socket_open
-mov  ipx_socket,dx			;номер сокета 6666h
+mov  ipx_socket,dx			;╨╜╨╛╨╝╨╡╤А ╤Б╨╛╨║╨╡╤В╨░ 6666h
 mov  dx,5757h
 call ipx_socket_open
-mov  spx_socket,dx			;номер сокета 4444h
+mov  spx_socket,dx			;╨╜╨╛╨╝╨╡╤А ╤Б╨╛╨║╨╡╤В╨░ 4444h
 ;--------------------------------------------------------------------
 XOR  AX,AX
 MOV  WORD PTR ECB[6],AX
@@ -107,24 +107,24 @@ mov  ax,ipx_socket
 mov  word ptr ecb[10],ax
 ;--------------------------------------------------------------------
 mov  ax,02h
-MOV  WORD PTR ECB[34],aX  		;Заполнение поля FragmentCnt в ЕСВ
+MOV  WORD PTR ECB[34],aX  		;╨Ч╨░╨┐╨╛╨╗╨╜╨╡╨╜╨╕╨╡ ╨┐╨╛╨╗╤П FragmentCnt ╨▓ ╨Х╨б╨Т
 ;--------------------------------------------------------------------
-MOV  WORD PTR ecb[36],OFFSET pbl_ipx_resiver_spx;поле Adress сегмент
+MOV  WORD PTR ecb[36],OFFSET pbl_ipx_resiver_spx;╨┐╨╛╨╗╨╡ Adress ╤Б╨╡╨│╨╝╨╡╨╜╤В
 MOV  WORD PTR ECB[38],CS
-MOV  WORD PTR ecb[40],30		;поле SIZE
+MOV  WORD PTR ecb[40],30		;╨┐╨╛╨╗╨╡ SIZE
 ;--------------------------------------------------------------------
-MOV  WORD PTR ecb[42],OFFSET file_NAME	;поле Adress сегмент
+MOV  WORD PTR ecb[42],OFFSET file_NAME	;╨┐╨╛╨╗╨╡ Adress ╤Б╨╡╨│╨╝╨╡╨╜╤В
 MOV  WORD PTR ECB[44],CS
 mov  ax,13
-MOV  WORD PTR ecb[46],ax		;поле SIZE
+MOV  WORD PTR ecb[46],ax		;╨┐╨╛╨╗╨╡ SIZE
 ;--------------------------------------------------------------------
-MOV  BX,IPXListen			;вызов функции ожидания пакета от
-MOV  SI,OFFSET ECB			;передающей станции
+MOV  BX,IPXListen			;╨▓╤Л╨╖╨╛╨▓ ╤Д╤Г╨╜╨║╤Ж╨╕╨╕ ╨╛╨╢╨╕╨┤╨░╨╜╨╕╤П ╨┐╨░╨║╨╡╤В╨░ ╨╛╤В
+MOV  SI,OFFSET ECB			;╨┐╨╡╤А╨╡╨┤╨░╤О╤Й╨╡╨╣ ╤Б╤В╨░╨╜╤Ж╨╕╨╕
 CALL [API_IPX]
 ;-------------------------------------------------
 mov  bp,offset error_04h
 mov  si,offset ecb
-CALL waitings   		;ожидание прихода пакета от станции SPX
+CALL waitings   		;╨╛╨╢╨╕╨┤╨░╨╜╨╕╨╡ ╨┐╤А╨╕╤Е╨╛╨┤╨░ ╨┐╨░╨║╨╡╤В╨░ ╨╛╤В ╤Б╤В╨░╨╜╤Ж╨╕╨╕ SPX
 cmp  exit_flag,1
 jne  ready
 jmp  near ptr quit
@@ -133,9 +133,9 @@ ready:
 CLD
 MOV  CX,6
 MOV  DI,OFFSET ecb[28]
-MOV  SI,OFFSET net_adres[4]			;заполняем поле
-REP  MOVSB					;ImmAddress в ECB[28]
-CLD						;широковещательным адресом
+MOV  SI,OFFSET net_adres[4]			;╨╖╨░╨┐╨╛╨╗╨╜╤П╨╡╨╝ ╨┐╨╛╨╗╨╡
+REP  MOVSB					;ImmAddress ╨▓ ECB[28]
+CLD						;╤И╨╕╤А╨╛╨║╨╛╨▓╨╡╤Й╨░╤В╨╡╨╗╤М╨╜╤Л╨╝ ╨░╨┤╤А╨╡╤Б╨╛╨╝
 MOV  CX,10
 MOV  DI,OFFSET pbl_IPX_transmit_ipx[6]
 MOV  SI,OFFSET net_adres
@@ -156,7 +156,7 @@ ready1:
 mov  bp,offset req_file
 mov  dx,0202h
 mov  cx,32
-CALL out_date   		;ожидание прихода пакета от станции ipx
+CALL out_date   		;╨╛╨╢╨╕╨┤╨░╨╜╨╕╨╡ ╨┐╤А╨╕╤Е╨╛╨┤╨░ ╨┐╨░╨║╨╡╤В╨░ ╨╛╤В ╤Б╤В╨░╨╜╤Ж╨╕╨╕ ipx
 mov  bp,offset file_name
 mov  dx,0225h
 mov  cx,13
@@ -171,7 +171,7 @@ call ipx_listen_ipx
 
 mov  bp,offset error_04h
 mov  si,offset ecb
-CALL waitings   		;ожидание прихода пакета от станции ipx
+CALL waitings   		;╨╛╨╢╨╕╨┤╨░╨╜╨╕╨╡ ╨┐╤А╨╕╤Е╨╛╨┤╨░ ╨┐╨░╨║╨╡╤В╨░ ╨╛╤В ╤Б╤В╨░╨╜╤Ж╨╕╨╕ ipx
 cmp  exit_flag,1
 jne  ready2
 jmp  near ptr quit
@@ -184,15 +184,15 @@ CALL OUT_date
 
 ;-------------------------------------------------
 process:
-XOR  AX,AX              	     	;подготовка блока ECB
-MOV  WORD PTR ECB[6],AX			;для передачи пакета серверу
+XOR  AX,AX              	     	;╨┐╨╛╨┤╨│╨╛╤В╨╛╨▓╨║╨░ ╨▒╨╗╨╛╨║╨░ ECB
+MOV  WORD PTR ECB[6],AX			;╨┤╨╗╤П ╨┐╨╡╤А╨╡╨┤╨░╤З╨╕ ╨┐╨░╨║╨╡╤В╨░ ╤Б╨╡╤А╨▓╨╡╤А╤Г
 MOV  WORD PTR ECB[4],AX
 mov  ax,ipx_socket
 mov  word ptr ecb[10],ax
 mov  word ptr pbl_ipx_transmit_spx[28],ax
 ;--------------------------------------------------------------------
 mov  ax,02h
-MOV  WORD PTR ECB[34],aX		;Заполнение поля FragmentCnt в ЕСВ
+MOV  WORD PTR ECB[34],aX		;╨Ч╨░╨┐╨╛╨╗╨╜╨╡╨╜╨╕╨╡ ╨┐╨╛╨╗╤П FragmentCnt ╨▓ ╨Х╨б╨Т
 ;--------------------------------------------------------------------
 CLD
 MOV  CX,6
@@ -200,17 +200,17 @@ MOV  DI,OFFSET ecb[28]
 MOV  SI,OFFSET pbl_ipx_resiver_spx[22]
 REP  MOVSB
 ;--------------------------------------------------------------------
-MOV  WORD PTR ecb[38],CS		;поле Adress 1 сегмент
-MOV  WORD PTR ecb[36],OFFSET pbl_IPX_transmit_spx;поле Adress 1 смещение
-MOV  WORD PTR ecb[40],30		;поле SIZE 1
+MOV  WORD PTR ecb[38],CS		;╨┐╨╛╨╗╨╡ Adress 1 ╤Б╨╡╨│╨╝╨╡╨╜╤В
+MOV  WORD PTR ecb[36],OFFSET pbl_IPX_transmit_spx;╨┐╨╛╨╗╨╡ Adress 1 ╤Б╨╝╨╡╤Й╨╡╨╜╨╕╨╡
+MOV  WORD PTR ecb[40],30		;╨┐╨╛╨╗╨╡ SIZE 1
 ;--------------------------------------------------------------------
-MOV  WORD PTR ecb[44],CS		;поле Adress 2 сегмент
-MOV  WORD PTR ecb[42],offset file_name1	;поле Adress 2 смещение
-MOV  WORD PTR ecb[46],13  		;поле SIZE 2
-;-----------------------		;подготовка IPX заголовка
-MOV  pbl_IPX_transmit_spx[5],4		;тип пакета
-;-------------------------------	;заполнение поля 
-MOV  AX,WORD PTR pbl_ipx_resiver_spx[28];destsocket в заголовке IPX
+MOV  WORD PTR ecb[44],CS		;╨┐╨╛╨╗╨╡ Adress 2 ╤Б╨╡╨│╨╝╨╡╨╜╤В
+MOV  WORD PTR ecb[42],offset file_name1	;╨┐╨╛╨╗╨╡ Adress 2 ╤Б╨╝╨╡╤Й╨╡╨╜╨╕╨╡
+MOV  WORD PTR ecb[46],13  		;╨┐╨╛╨╗╨╡ SIZE 2
+;-----------------------		;╨┐╨╛╨┤╨│╨╛╤В╨╛╨▓╨║╨░ IPX ╨╖╨░╨│╨╛╨╗╨╛╨▓╨║╨░
+MOV  pbl_IPX_transmit_spx[5],4		;╤В╨╕╨┐ ╨┐╨░╨║╨╡╤В╨░
+;-------------------------------	;╨╖╨░╨┐╨╛╨╗╨╜╨╡╨╜╨╕╨╡ ╨┐╨╛╨╗╤П 
+MOV  AX,WORD PTR pbl_ipx_resiver_spx[28];destsocket ╨▓ ╨╖╨░╨│╨╛╨╗╨╛╨▓╨║╨╡ IPX
 MOV  WORD PTR pbl_IPX_transmit_spx[16],AX
 ;--------------------------------------------------------------------
 CLD
@@ -305,16 +305,16 @@ next:
 CLD
 MOV  CX,6
 MOV  DI,OFFSET ecb[28]
-MOV  SI,OFFSET pbl_ipx_resiver_ipx[22]			;заполняем поле
-REP  MOVSB					;ImmAddress в ECB[28]
-CLD						;широковещательным адресом
+MOV  SI,OFFSET pbl_ipx_resiver_ipx[22]			;╨╖╨░╨┐╨╛╨╗╨╜╤П╨╡╨╝ ╨┐╨╛╨╗╨╡
+REP  MOVSB					;ImmAddress ╨▓ ECB[28]
+CLD						;╤И╨╕╤А╨╛╨║╨╛╨▓╨╡╤Й╨░╤В╨╡╨╗╤М╨╜╤Л╨╝ ╨░╨┤╤А╨╡╤Б╨╛╨╝
 MOV  CX,10
 MOV  DI,OFFSET pbl_IPX_transmit_ipx[6]
 MOV  SI,OFFSET pbl_ipx_resiver_ipx[18]
 REP  MOVSB
 ;--------------------------------------------------------------------
-MOV  CX,01h			;посылка пакета IPXу как разрешение
-CALL ipx_send_ipx		;начала передачи файла
+MOV  CX,01h			;╨┐╨╛╤Б╤Л╨╗╨║╨░ ╨┐╨░╨║╨╡╤В╨░ IPX╤Г ╨║╨░╨║ ╤А╨░╨╖╤А╨╡╤И╨╡╨╜╨╕╨╡
+CALL ipx_send_ipx		;╨╜╨░╤З╨░╨╗╨░ ╨┐╨╡╤А╨╡╨┤╨░╤З╨╕ ╤Д╨░╨╣╨╗╨░
 ;--------------------------------------------------------------------
 mov  bp,offset error_03h
 mov  si,offset ecb
@@ -324,7 +324,7 @@ jne  ready5
 jmp  near ptr quit
 ready5:
 ;--------------------------------------------------------------------
-MOV  BX,512				;прием пакета с файлом от ipx
+MOV  BX,512				;╨┐╤А╨╕╨╡╨╝ ╨┐╨░╨║╨╡╤В╨░ ╤Б ╤Д╨░╨╣╨╗╨╛╨╝ ╨╛╤В ipx
 MOV  DX,OFFSET buffer_resiver
 MOV  CX,02h
 CALL ipx_listen_ipx
@@ -342,7 +342,7 @@ xchg ah,al
 SUB  AX,30
 MOV  long,AX
 ;--------------------------------------------------------------------
-mov  cx,02h				;посылка пакета SPXa
+mov  cx,02h				;╨┐╨╛╤Б╤Л╨╗╨║╨░ ╨┐╨░╨║╨╡╤В╨░ SPXa
 mov  bx,long
 mov  dx,offset buffer_resiver
 mov  si,offset ecb_spx_tx
@@ -374,9 +374,9 @@ inc  cols
 JMP  NEAR PTR next
 bad:
 mov  dx,ipx_socket
-call ipx_socket_close   		;номер сокета 6666h
+call ipx_socket_close   		;╨╜╨╛╨╝╨╡╤А ╤Б╨╛╨║╨╡╤В╨░ 6666h
 mov  dx,spx_socket
-call ipx_socket_close			;номер сокета 4444h
+call ipx_socket_close			;╨╜╨╛╨╝╨╡╤А ╤Б╨╛╨║╨╡╤В╨░ 4444h
 quit:
 MOV  AH,4ch
 INT  21h
@@ -411,26 +411,26 @@ exit: RET
 ipx_load ENDP
 ipx_send_ipx PROC
 ;--------------------------------------------------------------------
-XOR  AX,AX              	     	;подготовка блока ECB
-MOV  WORD PTR ECB[6],AX			;для передачи пакета серверу
+XOR  AX,AX              	     	;╨┐╨╛╨┤╨│╨╛╤В╨╛╨▓╨║╨░ ╨▒╨╗╨╛╨║╨░ ECB
+MOV  WORD PTR ECB[6],AX			;╨┤╨╗╤П ╨┐╨╡╤А╨╡╨┤╨░╤З╨╕ ╨┐╨░╨║╨╡╤В╨░ ╤Б╨╡╤А╨▓╨╡╤А╤Г
 MOV  WORD PTR ECB[4],AX
 mov  ax,ipx_socket
 mov  word ptr ecb[10],ax
 mov  word ptr pbl_ipx_transmit_ipx[28],ax
 ;--------------------------------------------------------------------
-MOV  WORD PTR ECB[34],CX		;Заполнение поля FragmentCnt в ЕСВ
+MOV  WORD PTR ECB[34],CX		;╨Ч╨░╨┐╨╛╨╗╨╜╨╡╨╜╨╕╨╡ ╨┐╨╛╨╗╤П FragmentCnt ╨▓ ╨Х╨б╨Т
 ;--------------------------------------------------------------------
-MOV  WORD PTR ecb[38],CS		;поле Adress 1 сегмент
-MOV  WORD PTR ecb[36],OFFSET pbl_IPX_transmit_ipx;поле Adress 1 смещение
-MOV  WORD PTR ecb[40],30		;поле SIZE 1
+MOV  WORD PTR ecb[38],CS		;╨┐╨╛╨╗╨╡ Adress 1 ╤Б╨╡╨│╨╝╨╡╨╜╤В
+MOV  WORD PTR ecb[36],OFFSET pbl_IPX_transmit_ipx;╨┐╨╛╨╗╨╡ Adress 1 ╤Б╨╝╨╡╤Й╨╡╨╜╨╕╨╡
+MOV  WORD PTR ecb[40],30		;╨┐╨╛╨╗╨╡ SIZE 1
 ;--------------------------------------------------------------------
-MOV  WORD PTR ecb[44],CS		;поле Adress 2 сегмент
-MOV  WORD PTR ecb[42],DX        	;поле Adress 2 смещение
-MOV  WORD PTR ecb[46],BX  		;поле SIZE 2
-;-----------------------		;подготовка IPX заголовка
-MOV  pbl_IPX_transmit_ipx[5],4		;тип пакета
-;-------------------------------	;заполнение поля 
-MOV  AX,7676h                           ;destsocket в заголовке IPX
+MOV  WORD PTR ecb[44],CS		;╨┐╨╛╨╗╨╡ Adress 2 ╤Б╨╡╨│╨╝╨╡╨╜╤В
+MOV  WORD PTR ecb[42],DX        	;╨┐╨╛╨╗╨╡ Adress 2 ╤Б╨╝╨╡╤Й╨╡╨╜╨╕╨╡
+MOV  WORD PTR ecb[46],BX  		;╨┐╨╛╨╗╨╡ SIZE 2
+;-----------------------		;╨┐╨╛╨┤╨│╨╛╤В╨╛╨▓╨║╨░ IPX ╨╖╨░╨│╨╛╨╗╨╛╨▓╨║╨░
+MOV  pbl_IPX_transmit_ipx[5],4		;╤В╨╕╨┐ ╨┐╨░╨║╨╡╤В╨░
+;-------------------------------	;╨╖╨░╨┐╨╛╨╗╨╜╨╡╨╜╨╕╨╡ ╨┐╨╛╨╗╤П 
+MOV  AX,7676h                           ;destsocket ╨▓ ╨╖╨░╨│╨╛╨╗╨╛╨▓╨║╨╡ IPX
 MOV  WORD PTR pbl_IPX_transmit_ipx[16],AX
 cld 
 mov  si,offset pbl_ipx_transmit_ipx[16]
@@ -452,18 +452,18 @@ MOV  WORD PTR ECB[4],AX
 mov  ax,ipx_socket
 mov  word ptr ecb[10],ax
 ;--------------------------------------------------------------------
-MOV  WORD PTR ECB[34],CX  		;Заполнение поля FragmentCnt в ЕСВ
+MOV  WORD PTR ECB[34],CX  		;╨Ч╨░╨┐╨╛╨╗╨╜╨╡╨╜╨╕╨╡ ╨┐╨╛╨╗╤П FragmentCnt ╨▓ ╨Х╨б╨Т
 ;--------------------------------------------------------------------
-MOV  WORD PTR ecb[36],OFFSET pbl_ipx_resiver_ipx;поле Adress сегмент
+MOV  WORD PTR ecb[36],OFFSET pbl_ipx_resiver_ipx;╨┐╨╛╨╗╨╡ Adress ╤Б╨╡╨│╨╝╨╡╨╜╤В
 MOV  WORD PTR ECB[38],CS
-MOV  WORD PTR ecb[40],30		;поле SIZE
+MOV  WORD PTR ecb[40],30		;╨┐╨╛╨╗╨╡ SIZE
 ;--------------------------------------------------------------------
-MOV  WORD PTR ecb[42],DX		;поле Adress сегмент
+MOV  WORD PTR ecb[42],DX		;╨┐╨╛╨╗╨╡ Adress ╤Б╨╡╨│╨╝╨╡╨╜╤В
 MOV  WORD PTR ECB[44],CS
-MOV  WORD PTR ecb[46],BX		;поле SIZE
+MOV  WORD PTR ecb[46],BX		;╨┐╨╛╨╗╨╡ SIZE
 ;--------------------------------------------------------------------
-MOV  BX,IPXListen			;вызов функции ожидания пакета от
-MOV  SI,OFFSET ECB			;передающей станции
+MOV  BX,IPXListen			;╨▓╤Л╨╖╨╛╨▓ ╤Д╤Г╨╜╨║╤Ж╨╕╨╕ ╨╛╨╢╨╕╨┤╨░╨╜╨╕╤П ╨┐╨░╨║╨╡╤В╨░ ╨╛╤В
+MOV  SI,OFFSET ECB			;╨┐╨╡╤А╨╡╨┤╨░╤О╤Й╨╡╨╣ ╤Б╤В╨░╨╜╤Ж╨╕╨╕
 CALL [API_IPX]
 popa
 RET					;----------------------------
@@ -507,23 +507,23 @@ mov  word ptr pbl_spx_transmit[34],ax
 mov  ax,dest_chanell
 mov  word ptr pbl_spx_transmit[32],ax
 ;--------------------------------------------------------------------
-MOV  si[34],CX  	;Заполнение поля FragmentCnt в ЕСВ
+MOV  si[34],CX  	;╨Ч╨░╨┐╨╛╨╗╨╜╨╡╨╜╨╕╨╡ ╨┐╨╛╨╗╤П FragmentCnt ╨▓ ╨Х╨б╨Т
 ;--------------------------------------------------------------------
-MOV  si[36],OFFSET pbl_spx_transmit	;поле Adress сегмент
+MOV  si[36],OFFSET pbl_spx_transmit	;╨┐╨╛╨╗╨╡ Adress ╤Б╨╡╨│╨╝╨╡╨╜╤В
 MOV  si[38],CS
 mov  ax,42
-MOV  si[40],ax		;поле SIZE
+MOV  si[40],ax		;╨┐╨╛╨╗╨╡ SIZE
 ;--------------------------------------------------------------------
-MOV  si[42],DX		;поле Adress сегмент
+MOV  si[42],DX		;╨┐╨╛╨╗╨╡ Adress ╤Б╨╡╨│╨╝╨╡╨╜╤В
 MOV  si[44],CS
-MOV  si[46],BX		;поле SIZE
+MOV  si[46],BX		;╨┐╨╛╨╗╨╡ SIZE
 push si
 ;--------------------------------------------------------------------
 CLD
 MOV  CX,6
 MOV  DI,OFFSET si[28]
-MOV  SI,OFFSET pbl_ipx_resiver_ipx[22]		;заполняем поле
-REP  MOVSB					;ImmAddress в ECB[28]
+MOV  SI,OFFSET pbl_ipx_resiver_ipx[22]		;╨╖╨░╨┐╨╛╨╗╨╜╤П╨╡╨╝ ╨┐╨╛╨╗╨╡
+REP  MOVSB					;ImmAddress ╨▓ ECB[28]
 cld
 MOV  CX,10
 MOV  DI,OFFSET pbl_spx_transmit[6]
@@ -541,12 +541,12 @@ load_ecb endp
 IPX_socket_open proc
 MOV  BX,IPXOpenSocket
 MOV  AL,0ffh
-CALL [API_IPX]				;открываем сокет
+CALL [API_IPX]				;╨╛╤В╨║╤А╤Л╨▓╨░╨╡╨╝ ╤Б╨╛╨║╨╡╤В
 ret
 IPX_socket_open endp
 IPX_socket_close proc
 MOV  BX,IPXcloseSocket
-CALL [API_IPX]				;открываем сокет
+CALL [API_IPX]				;╨╛╤В╨║╤А╤Л╨▓╨░╨╡╨╝ ╤Б╨╛╨║╨╡╤В
 ret
 IPX_socket_close endp
 SPX_listen_for_sequenced_packet proc
@@ -556,16 +556,16 @@ MOV  si[4],AX
 mov  ax,SPX_socket
 mov  si[10],ax
 ;--------------------------------------------------------------------
-MOV  si[34],CX  	;Заполнение поля FragmentCnt в ЕСВ
+MOV  si[34],CX  	;╨Ч╨░╨┐╨╛╨╗╨╜╨╡╨╜╨╕╨╡ ╨┐╨╛╨╗╤П FragmentCnt ╨▓ ╨Х╨б╨Т
 ;--------------------------------------------------------------------
-MOV  si[36],OFFSET pbl_spx_resiver	;поле Adress сегмент
+MOV  si[36],OFFSET pbl_spx_resiver	;╨┐╨╛╨╗╨╡ Adress ╤Б╨╡╨│╨╝╨╡╨╜╤В
 MOV  si[38],CS
 mov  ax,42
-MOV  si[40],ax		;поле SIZE
+MOV  si[40],ax		;╨┐╨╛╨╗╨╡ SIZE
 ;--------------------------------------------------------------------
-MOV  si[42],DX		;поле Adress сегмент
+MOV  si[42],DX		;╨┐╨╛╨╗╨╡ Adress ╤Б╨╡╨│╨╝╨╡╨╜╤В
 MOV  si[44],CS
-MOV  si[46],BX		;поле SIZE
+MOV  si[46],BX		;╨┐╨╛╨╗╨╡ SIZE
 mov  bx,SPXListenForSequencedPacket
 call [API_IPX]
 ret
@@ -597,7 +597,7 @@ push es
       mov  al,es:[417h]
 pop  es
       cmp  al,5
-Jne   waitings1		;ожидание прихода пакета
+Jne   waitings1		;╨╛╨╢╨╕╨┤╨░╨╜╨╕╨╡ ╨┐╤А╨╕╤Е╨╛╨┤╨░ ╨┐╨░╨║╨╡╤В╨░
 mov   exit_flag,1
 wait_quit:
 RET
