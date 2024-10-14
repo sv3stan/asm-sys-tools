@@ -79,10 +79,10 @@ irq_ret:        pop bx
                 pop ds
                 iret
 ;
-error_reset     db 0dh,0ah,'ë°Æ© †§†Ø‚•p†',7,0dh,0ah,'$'
-error_addname db 0dh,0ah,'ë°Æ© ®¨•≠®',7,0dh,0ah,'$'
-error_listen    db  0dh,0ah,'ë°Æ© listen',7,0dh,0ah,'$'
-error_listen2   db 0dh,0ah,'ë°Æ© listen ncb2',7,0dh,0ah,'$'
+error_reset     db 0dh,0ah,'–û—à–∏–±–∫–∞ reset',7,0dh,0ah,'$'
+error_addname   db 0dh,0ah,'–û—à–∏–±–∫–∞ addname',7,0dh,0ah,'$'
+error_listen    db 0dh,0ah,'–û—à–∏–±–∫–∞ listen',7,0dh,0ah,'$'
+error_listen2   db 0dh,0ah,'–û—à–∏–±–∫–∞ listen ncb2',7,0dh,0ah,'$'
 
 m1:             
                 push ds
@@ -150,8 +150,3 @@ listen3_ok :    cli
                 int 27h
 main        endp
                 end start
-                
-                                
-                                                
-                                
-

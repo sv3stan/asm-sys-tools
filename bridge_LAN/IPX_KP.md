@@ -1,68 +1,68 @@
-Этот код использует сетевой протокол IPX (Internetwork Packet Exchange) для передачи файлов между двумя компьютерами. Она реализует основной функционал отправки и приема пакетов данных через IPX.
+﻿This code uses the IPX (Internetwork Packet Exchange) network protocol to transfer files between two computers. It implements the basic functionality of sending and receiving data packets via IPX.
 
-### Описание работы программы
+### Program Operation Overview
 
-#### Основные задачи:
-1. **Загрузка драйвера IPX** - программа проверяет наличие загруженного драйвера IPX, необходимого для работы с протоколом IPX.
-2. **Открытие IPX-сокета** - программа открывает сокет для передачи данных по сети через IPX.
-3. **Ожидание запроса файла** - программа слушает сеть на наличие запроса на определенный файл.
-4. **Чтение файла** - при запросе программа открывает файл, читает его по блокам, и отправляет через IPX.
-5. **Отправка пакетов с файлами** - после того как файл найден и прочитан, его содержимое отправляется по сети в виде пакетов.
+#### Main Tasks:
+1. **Loading the IPX driver** - The program checks if the IPX driver is loaded, which is necessary to work with the IPX protocol.
+2. **Opening an IPX socket** - The program opens a socket to transmit data over the network via IPX.
+3. **Waiting for a file request** - The program listens for a network request for a specific file.
+4. **Reading the file** - Upon receiving a request, the program opens the file, reads it in blocks, and sends it via IPX.
+5. **Sending file packets** - After the file is found and read, its contents are sent over the network as data packets.
 
-#### Структура программы:
+#### Program Structure:
 
-1. **Сообщения** - в коде определено несколько сообщений на русском языке, которые выводятся пользователю в зависимости от ситуации (успешная передача файла, ошибка открытия файла, ошибка IPX и т.д.).
+1. **Messages** - The code defines several messages in Russian that are displayed to the user depending on the situation (successful file transfer, file open error, IPX error, etc.).
 
-2. **Основные переменные**:
-    - `file_NAME` - строка для хранения имени файла, который будет передаваться.
-    - `handle` - дескриптор открытого файла.
-    - `buffer_transmit` - буфер для хранения данных файла, которые будут переданы.
-    - `ipx_socket` - сокет IPX, через который происходит передача данных.
-    - `ECB` - элементарный блок управления (ECB), структура данных для управления передачей пакетов IPX.
+2. **Main Variables**:
+    - `file_NAME` - A string for storing the name of the file to be transferred.
+    - `handle` - A descriptor of the opened file.
+    - `buffer_transmit` - A buffer for storing file data to be transmitted.
+    - `ipx_socket` - The IPX socket used for data transmission.
+    - `ECB` - Elemental Control Block (ECB), a data structure for managing packet transmission via IPX.
 
-3. **Основной процесс**:
-    - **Инициализация экрана** (с помощью BIOS-интерфейса `INT 10h`) - это установка видеорежима и вывод информации о работе программы.
-    - **Загрузка IPX** - происходит с помощью `INT 2Fh`, который вызывает специальную функцию для проверки наличия загруженного драйвера IPX. Если IPX не установлен, выводится сообщение об ошибке.
-    - **Открытие IPX сокета** - программа открывает сокет с номером `6666h` для передачи данных. Этот сокет используется для отправки и получения данных.
-    - **Ожидание запроса на файл** - программа начинает ожидать запроса на файл с помощью функции `ipx_listen`. Если поступает запрос, программа читает имя файла и пытается его открыть.
-    - **Чтение файла** - файл читается блоками по 512 байт с помощью функции DOS `INT 21h` (функция `3Fh`).
-    - **Передача файла** - содержимое файла отправляется через IPX в блоках по 512 байт.
-    - **Завершение передачи** - после передачи всех блоков программа закрывает файл и сокет, завершает работу.
+3. **Main Process**:
+    - **Screen initialization** (using the BIOS interface `INT 10h`) - This sets the video mode and displays program information.
+    - **IPX loading** - The program checks for the presence of a loaded IPX driver using `INT 2Fh`, which calls a function to verify if IPX is loaded. If IPX is not installed, an error message is displayed, and the program terminates.
+    - **Opening the IPX socket** - The program opens a socket with the number `6666h` for data transmission. This socket is used to send and receive data.
+    - **Waiting for a file request** - The program starts listening for a file request using the `ipx_listen` function. When a request is received, the program reads the file name and attempts to open it.
+    - **Reading the file** - The file is read in blocks of 512 bytes using the DOS function `INT 21h` (function `3Fh`).
+    - **File transmission** - The file content is sent via IPX in blocks of 512 bytes.
+    - **Ending the transmission** - After all blocks are transmitted, the program closes the file and socket, then terminates.
 
-### Как работает код?
+### How Does the Code Work?
 
-#### 1. **Загрузка драйвера IPX**:
-   Код проверяет, установлен ли драйвер IPX:
+#### 1. **Loading the IPX Driver**:
+   The code checks whether the IPX driver is installed:
    ```asm
    MOV  AX,SEARCH_IPX
    INT  2fh
    CMP  AL,0ffh
    JNE  error
    ```
-   Если IPX не найден, программа завершает работу, выводя сообщение об ошибке.
+   If IPX is not found, the program terminates, displaying an error message.
 
-#### 2. **Открытие IPX сокета**:
-   Сокет открывается через вызов функции `IPXOpenSocket`, результат сохраняется в переменной `ipx_socket`. Этот сокет используется для передачи данных.
+#### 2. **Opening the IPX Socket**:
+   The socket is opened via the `IPXOpenSocket` function, and the result is stored in the `ipx_socket` variable. This socket is used for data transmission.
 
-#### 3. **Ожидание запроса на файл**:
-   С помощью функции `ipx_listen` программа ждет прихода пакета, содержащего запрос на файл:
+#### 3. **Waiting for a File Request**:
+   Using the `ipx_listen` function, the program waits for a packet containing a file request:
    ```asm
    CALL ipx_listen
    ```
-   Когда запрос приходит, программа сравнивает имя файла с тем, что указано в запросе.
+   When the request arrives, the program compares the file name with the one specified in the request.
 
-#### 4. **Открытие файла**:
-   Когда запрос на файл подтвержден, программа пытается открыть файл для чтения:
+#### 4. **Opening the File**:
+   Once the file request is confirmed, the program attempts to open the file for reading:
    ```asm
    MOV  AH,3dh
    MOV  AL,0
    MOV  DX,OFFSET file_NAME
    INT  21h
    ```
-   Если файл не найден, выводится сообщение об ошибке.
+   If the file is not found, an error message is displayed.
 
-#### 5. **Чтение и передача файла**:
-   Программа читает файл блоками по 512 байт, используя DOS-прерывание:
+#### 5. **Reading and Transmitting the File**:
+   The program reads the file in 512-byte blocks using the DOS interrupt:
    ```asm
    MOV  AH,3fh
    MOV  BX,handle
@@ -71,13 +71,13 @@
    INT  21h
    MOV LastBlock,AX
    ```
-   Прочитанные данные отправляются через IPX сокет:
+   The read data is then sent through the IPX socket:
    ```asm
    CALL ipx_send
    ```
 
-#### 6. **Завершение передачи**:
-   После завершения передачи программа закрывает файл и сокет и завершает работу:
+#### 6. **Ending the Transmission**:
+   After completing the transmission, the program closes the file and socket and terminates:
    ```asm
    CALL close_file
    CALL ipx_socket_close
@@ -85,16 +85,16 @@
    INT  21h
    ```
 
-### Введение имени файла
+### Specifying the File Name
 
-Имя файла передается в переменной `file_NAME`. В текущей версии программы имя файла задается статически в памяти с помощью команды:
+The file name is passed in the `file_NAME` variable. In the current version of the program, the file name is statically set in memory using the command:
 ```asm
 file_NAME DB 13 DUP(0)
 ```
-Этот массив из 13 байт может быть использован для хранения имени файла. Перед началом передачи можно заполнить этот массив именем файла, который необходимо передать. 
+This 13-byte array can be used to store the file name. Before starting the main data transmission loop, you can fill this array with the name of the file that needs to be transferred.
 
-Таким образом, если ты хочешь передать конкретный файл, можно изменить содержимое `file_NAME` в начале программы перед запуском основного цикла передачи данных.
+Thus, if you want to transfer a specific file, you can modify the contents of `file_NAME` at the beginning of the program before starting the data transmission process.
 
-### Резюме
+### Summary
 
-Программа работает с использованием IPX для передачи файлов между машинами в сети. Основные операции включают инициализацию IPX, открытие сокета, ожидание запроса на файл, чтение и отправку файла, а также закрытие сокета и файла после завершения.
+The program works by using IPX to transfer files between machines on a network. The main operations include IPX initialization, socket opening, waiting for a file request, reading and sending the file, and closing the socket and file after the process is complete.

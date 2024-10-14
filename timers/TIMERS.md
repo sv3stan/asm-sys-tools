@@ -1,49 +1,53 @@
-ÇÖ¦ Ô Ø·ã Ô Ô   ãã¨Ò¢Ð¨á¨ · Øá¨¦Ô óÔ û¨Ô ¦ÐÞ á ¢Öåñ ë ãá¨¦¨ MS-DOS. ×Ô á¨ Ð·óç¨å ØáÖ¬á ÒÒç, ÆÖåÖá Þ çãå Ô ëÐ·ë ¨å å ½Ò¨á,   å Æé¨ ÒÖé¨å á ¢Öå åí ã Ø á Ò¨åá Ò· ÆÖÒ Ô¦ÔÖ½ ãåáÖÆ· ¦ÐÞ çãå ÔÖëÆ· ëá¨Ò¨Ô·. ìÖå á ó¢Öá ÖãÔÖëÔñµ û ãå¨½ ÆÖ¦  · ¨¬Ö ªçÔÆ¤·ÖÔ Ð :
+ï»¿Hereâ€™s the English translation of your description of the assembly program designed for MS-DOS that sets a timer and can work with command-line parameters to set the time:
 
-### ×¢ù Þ ãåáçÆåçá  ØáÖ¬á ÒÒñ
+---
 
-1. **ä¨¬Ò¨Ôåñ**:
-   - ÝáÖ¬á ÒÒ  á ¢Öå ¨å ë ã¨¬Ò¨Ôå¨ `cseg`, ÆÖåÖáñ½ ÖØá¨¦¨ÐÞ¨å ã¨¬Ò¨Ôå ÆÖ¦  · ¦ ÔÔñµ.
-   - ì Ô û Ð¨ ØáÖ¬á ÒÒñ ØáÖ·ãµÖ¦·å Ø¨á¨µÖ¦ Ô  Ò¨åÆç `init`.
+The code is written in assembly language and is intended to run in the MS-DOS environment. It implements a program that sets a timer and can also work with command-line parameters for setting the time. Hereâ€™s an overview of the main parts of the code and its functionality:
 
-2. **×¢žÞëÐ¨Ô·¨ Ø¨á¨Ò¨ÔÔñµ**:
-   - `times`: Ò ãã·ë, ÆÖåÖáñ½ ·ãØÖÐíóç¨åãÞ ¦ÐÞ µá Ô¨Ô·Þ ëá¨Ò¨Ô· (û ãñ, Ò·Ôçåñ, ã¨ÆçÔ¦ñ).
-   - `msg` · `msg_err`: ãåáÖÆ·, ·ãØÖÐíóç¨Òñ¨ ¦ÐÞ ëñëÖ¦  ãÖÖ¢ù¨Ô·½ ØÖÐíóÖë å¨Ðœ.
-   - `old_1ch` · `old_4ah`: Ø¨á¨Ò¨ÔÔñ¨ ¦ÐÞ µá Ô¨Ô·Þ  ¦á¨ãÖë ãå áñµ Ö¢á ¢Öåû·ÆÖë Øá¨áñë Ô·½ ¦ÐÞ å ½Ò¨á .
+### General Structure of the Program
 
-### ×ãÔÖëÔñ¨ ØáÖ¤¨¦çáñ
+1. **Segments**:
+   - The program operates in the `cseg` segment, which defines the code and data segment.
+   - At the beginning of the program, there is a jump to the `init` label.
+
+2. **Variable Declarations**:
+   - `times`: an array used to store time (hours, minutes, seconds).
+   - `msg` and `msg_err`: strings used to output messages to the user.
+   - `old_1ch` and `old_4ah`: variables for storing the addresses of the old interrupt handlers for the timer.
+
+### Main Procedures
 
 1. **`init`**:
-   - øå  ØáÖ¤¨¦çá  ëñØÖÐÔÞ¨åãÞ Øá· ó ØçãÆ¨ ØáÖ¬á ÒÒñ · ØáÖë¨áÞ¨å Ø á Ò¨åáñ ÆÖÒ Ô¦ÔÖ½ ãåáÖÆ·.
-   - ©ãÐ· Ø¨áëñ½ Ø á Ò¨åá á ë¨Ô 'a', ØáÖ¬á ÒÒ  ¢ç¦¨å çãå ÔÖëÐ¨Ô  ã å ½Ò¨áÖÒ (ã Ø á Ò¨åá Ò· /a:hh:mm), ¨ãÐ· 'n', åÖ å ½Ò¨á Ô¨ ¢ç¦¨å çãå ÔÖëÐ¨Ô.
-   - Ýá· Öåãçåãåë·· Ø á Ò¨åáÖë ·Ð· Ô¨ë¨áÔñµ Ø á Ò¨åá µ ëñëÖ¦·åãÞ ãÖÖ¢ù¨Ô·¨ Ö¢ Öõ·¢Æ¨.
+   - This procedure is executed at the program's startup and checks the command-line parameters.
+   - If the first parameter is 'a', the program will set a timer (with parameters /a:hh:mm); if 'n', the timer will not be set.
+   - If there are no parameters or incorrect parameters, an error message is displayed.
 
-2. **`new_1ch` · `new_4ah`**:
-   - øå· ØáÖ¤¨¦çáñ ÞëÐÞœåãÞ Ö¢á ¢Öåû·Æ Ò· Øá¨áñë Ô·½ ¦ÐÞ å ½Ò¨á . ×Ô· çãå Ô ëÐ·ë œå ÔÖëñ¨ å ½Ò¨áñ.
-   - `new_1ch` çãå Ô ëÐ·ë ¨å å ½Ò¨á · ÖåÖ¢á é ¨å å¨Æçù¨¨ ëá¨ÒÞ Ô  ÷Æá Ô¨.
-   - `new_4ah` Öåë¨û ¨å ó  ¬¨Ô¨á ¤·œ óëçÆÖëÖ¬Ö ã·¬Ô Ð  û¨á¨ó ¦·Ô Ò·Æ.
+2. **`new_1ch` and `new_4ah`**:
+   - These procedures are interrupt handlers for the timer. They set new timers.
+   - `new_1ch` sets the timer and displays the current time on the screen.
+   - `new_4ah` is responsible for generating a sound signal through the speaker.
 
-### ×¢á ¢ÖåÆ  ëá¨Ò¨Ô·
+### Time Handling
 
-- ÇÖ¦ ãû·åñë ¨å å¨Æçù¨¨ ã·ãå¨ÒÔÖ¨ ëá¨ÒÞ ã ØÖÒÖùíœ Øá¨áñë Ô·½ DOS · Øá¨Ö¢á óç¨å ¨¬Ö ë ªÖáÒ å, ç¦Ö¢Ôñ½ ¦ÐÞ ÖåÖ¢á é¨Ô·Þ.
-- ìá¨ÒÞ µá Ô·åãÞ ë Ò ãã·ë¨ `times` ë ë·¦¨ ãåáÖÆ, ¬¦¨ Æ é¦ Þ û ãåí (û ãñ, Ò·Ôçåñ, ã¨ÆçÔ¦ñ) Øá¨¦ãå ëÐ¨Ô  Öå¦¨ÐíÔñÒ ¢ ½åÖÒ.
-- ìá¨ÒÞ ëñëÖ¦·åãÞ Ô  ÷Æá Ô Øá· ØÖÒÖù· Øá¨áñë Ô·Þ `int 10h`, ÆÖåÖáÖ¨ Öåë¨û ¨å ó  á ¢Öåç ã ë·¦¨Ö.
+- The code reads the current system time using DOS interrupts and converts it into a format suitable for display.
+- The time is stored in the `times` array as strings, where each part (hours, minutes, seconds) is represented by a separate byte.
+- The time is output to the screen using interrupt `int 10h`, which is responsible for video operations.
 
-### èãå ÔÖëÆ  å ½Ò¨á 
+### Timer Setting
 
-- ÝáÖ¬á ÒÒ  ØÖóëÖÐÞ¨å çãå ÔÖë·åí å ½Ò¨á ã Ø á Ò¨åá Ò· `hh:mm`, ÆÖåÖáñ¨ ëëÖ¦ÞåãÞ Øá· ó ØçãÆ¨.
-- Ýá· ¦Öãå·é¨Ô·· çãå ÔÖëÐ¨ÔÔÖ¬Ö ëá¨Ò¨Ô·, ëñóñë ¨åãÞ óëçÆÖëÖ½ ã·¬Ô Ð, ÆÖåÖáñ½ ¬¨Ô¨á·áç¨åãÞ ã ·ãØÖÐíóÖë Ô·¨Ò ØÖáå  `61H` · å ½Ò¨á  `8253`.
+- The program allows setting a timer with parameters `hh:mm`, which are entered at startup.
+- When the set time is reached, a sound signal is triggered, generated using port `61H` and timer `8253`.
 
-### ô ë¨áõ¨Ô·¨ á ¢Öåñ
+### Program Termination
 
-- ©ãÐ· ØáÖ¬á ÒÒ  ¢ñÐ  ó Øçù¨Ô  ¢¨ó Öõ·¢ÖÆ, ÖÔ  ó ë¨áõ ¨å á ¢Öåç û¨á¨ó ëñóÖë Øá¨áñë Ô·Þ `int 21h`, ûåÖ ëÖóëá ù ¨å çØá ëÐ¨Ô·¨ ÖØ¨á ¤·ÖÔÔÖ½ ã·ãå¨Ò¨.
+- If the program runs without errors, it terminates by calling interrupt `int 21h`, which returns control to the operating system.
 
-### Ýá·Ò¨áñ ·ãØÖÐíóÖë Ô·Þ
+### Usage Examples
 
-- ô ØçãÆ ã Ø á Ò¨åá Ò·:
-  - `prog.exe /a:12:30` - çãå ÔÖë·åí å ½Ò¨á Ô  12 û ãÖë 30 Ò·Ôçå.
-  - `prog.exe /n` - ó Øçãå·åí ¢¨ó çãå ÔÖëÆ· å ½Ò¨á .
+- Running with parameters:
+  - `prog.exe /a:12:30` - set the timer for 12 hours and 30 minutes.
+  - `prog.exe /n` - run without setting a timer.
 
-### ìñëÖ¦
+### Conclusion
 
-ÝáÖ¬á ÒÒ  Ö¢¨ãØ¨û·ë ¨å ªçÔÆ¤·ÖÔ ÐíÔÖãåí çãå ÔÖëÆ· å ½Ò¨á  ã ëÖóÒÖéÔÖãåíœ Ö¢á ¢ÖåÆ· ÆÖÒ Ô¦ÔÖ½ ãåáÖÆ· · ÖåÖ¢á é¨Ô·Þ ëá¨Ò¨Ô· Ô  ÷Æá Ô¨. ×Ô  å Æé¨ ó Ò¨ÔÞ¨å Ö¢á ¢Öåû·Æ· Øá¨áñë Ô·½ å ½Ò¨á , ûåÖ¢ñ á¨ Ð·óÖë åí ¦ÖØÖÐÔ·å¨ÐíÔñ½ ªçÔÆ¤·ÖÔ Ð, å ÆÖ½ Æ Æ óëçÆÖëÖ½ ã·¬Ô Ð.
+The program provides functionality for setting a timer with the ability to process command-line parameters and display the time on the screen. It also replaces the timer interrupt handlers to implement additional functionality, such as a sound signal.

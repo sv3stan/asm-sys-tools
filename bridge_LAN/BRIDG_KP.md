@@ -1,27 +1,26 @@
+﻿### General Structure of the Program
 
-### Общая структура программы
+1. **Declarations and Constants**:
+   - The code begins with the definition of segments and necessary variables, such as messages, counters, and structures for working with IPX and SPX protocols. This allows for low-level programming, directly managing memory and resources.
 
-1. **Объявления и константы**:
-   - Код начинается с определения сегмента и необходимых переменных, таких как сообщения, счетчики и структуры для работы с протоколами IPX и SPX. Это позволяет программировать на низком уровне, управляя памятью и ресурсами напрямую.
+2. **Initialization**:
+   - The program initializes the video mode using the `INT 10h` interrupt and displays a welcome message. It then loads the IPX driver and checks if it is installed. If the driver is not installed, the program terminates.
 
-2. **Инициализация**:
-   - Программа инициализирует видеорежим, используя прерывание `INT 10h`, и отображает приветственное сообщение. Затем она загружает драйвер IPX и проверяет, установлен ли он. Если драйвер не установлен, программа завершает выполнение.
+3. **Socket Setup**:
+   - The program opens sockets for IPX and SPX, enabling interaction with network protocols. Sockets are access points for transmitting data over the network.
 
-3. **Установка сокетов**:
-   - Программа открывает сокеты для IPX и SPX, которые позволяют взаимодействовать с сетевыми протоколами. Сокеты - это точки доступа для передачи данных по сети.
+4. **Waiting and Transmitting Data**:
+   - After setting up the sockets, the program waits for incoming packets from other devices. Various functions are used in the code for sending and receiving data, including the `IPXListen` function, which waits for a packet from a remote station.
 
-4. **Ожидание и передача данных**:
-   - После установки сокетов программа ждет приход пакетов от других устройств. В коде используются различные функции для отправки и получения данных, включая функцию `IPXListen`, которая ожидает пакет от удаленной станции.
+5. **Processing Received Data**:
+   - Upon receiving data, the program performs validation and forwards it to the appropriate segments. The program includes error handling in case something goes wrong.
 
-5. **Обработка полученных данных**:
-   - При получении данных программа выполняет проверку и передает их в нужные сегменты. Программа включает в себя обработку ошибок, если что-то идет не так.
+6. **Cyclic Transmission**:
+   - At the end of the program, a loop continuously transmits data until a limit is reached or an error occurs.
 
-6. **Циклическая передача**:
-   - В конце программы реализован цикл, который продолжает передавать данные, пока не будет достигнут лимит или не произойдет ошибка.
+### Detailed Description of Main Parts of the Code
 
-### Подробное описание основных частей кода
-
-#### 1. Директивы и объявления
+#### 1. Directives and Declarations
 
 ```assembly
 include ipxspx.inc
@@ -30,19 +29,19 @@ cseg SEGMENT
 ASSUME CS:cseg,DS:cseg
 ORG 100h
 ```
-- Директива `include` позволяет подключить файл с определениями IPX/SPX.
-- `.286` указывает, что код предназначен для процессоров Intel 80286 и выше.
-- `ORG 100h` указывает, что код будет загружен по адресу 100h в памяти.
+- The `include` directive connects a file containing IPX/SPX definitions.
+- `.286` indicates that the code is intended for Intel 80286 processors or higher.
+- `ORG 100h` specifies that the code will be loaded at address 100h in memory.
 
-#### 2. Переменные и сообщения
+#### 2. Variables and Messages
 
 ```assembly
-spx_load db 'SPX драйвер установлен'
-error_open_file DB 'Невозможно открыть файл         '
+spx_load db 'SPX driver installed'
+error_open_file DB 'Unable to open file         '
 ```
-- Здесь объявляются строки, которые будут использоваться для вывода сообщений на экран.
+- Here, strings are declared that will be used for displaying messages on the screen.
 
-#### 3. Инициализация видеорежима
+#### 3. Video Mode Initialization
 
 ```assembly
 MOV  AX,0600h
@@ -51,36 +50,36 @@ MOV  CX,0h
 MOV  BX,0700h
 INT  10h
 ```
-- Эта часть кода устанавливает видеорежим, вызывая прерывание BIOS, что позволяет программе управлять графическим выводом на экран.
+- This part of the code sets the video mode by calling a BIOS interrupt, allowing the program to manage graphical output on the screen.
 
-#### 4. Загрузка драйвера IPX
+#### 4. IPX Driver Loading
 
 ```assembly
 CALL IPX_load
 JNC  well
 JMP  NEAR PTR quit
 ```
-- Программа вызывает функцию загрузки драйвера IPX. Если загрузка прошла успешно, выполняется переход к метке `well`.
+- The program calls a function to load the IPX driver. If loading is successful, control passes to the `well` label.
 
-#### 5. Установка сокетов
+#### 5. Socket Setup
 
 ```assembly
 mov  dx,7777h
 call ipx_socket_open
-mov  ipx_socket,dx  ; номер сокета для IPX
+mov  ipx_socket,dx  ; IPX socket number
 ```
-- После успешной загрузки драйвера программа открывает сокеты для IPX и SPX, сохраняя их номера в переменных.
+- After successfully loading the driver, the program opens sockets for IPX and SPX, saving their numbers in variables.
 
-#### 6. Ожидание пакетов
+#### 6. Waiting for Packets
 
 ```assembly
 MOV  BX,IPXListen
 MOV  SI,OFFSET ECB
 CALL [API_IPX]
 ```
-- Программа использует функцию `IPXListen` для ожидания входящего пакета от удаленной станции. Этот процесс будет повторяться до тех пор, пока не будет получен пакет или не произойдет ошибка.
+- The program uses the `IPXListen` function to wait for an incoming packet from a remote station. This process will repeat until a packet is received or an error occurs.
 
-#### 7. Обработка полученных данных
+#### 7. Processing Received Data
 
 ```assembly
 mov  cx,02h
@@ -89,9 +88,9 @@ mov  dx,offset buffer_resiver
 mov  si,offset ecb_spx_tx
 call SPX_Send_Sequenced_packet 
 ```
-- После получения данных, программа обрабатывает их и отправляет дальше через SPX.
+- After receiving data, the program processes it and sends it further through SPX.
 
-#### 8. Циклическая передача данных
+#### 8. Cyclic Data Transmission
 
 ```assembly
 MOV  AX,512
@@ -100,10 +99,8 @@ JNE  bad
 inc  cols
 JMP  NEAR PTR next
 ```
-- Этот цикл продолжает принимать и отправлять пакеты, пока не достигнет определенного лимита. 
+- This loop continues receiving and sending packets until a certain limit is reached. 
 
-### Заключение
+### Conclusion
 
-Данный ассемблерный код выполняет функции по установлению соединения, ожиданию пакетов, их обработке и передаче, используя сетевые протоколы IPX и SPX. Он демонстрирует работу на низком уровне, что требует хорошего понимания архитектуры процессора и работы с памятью.
-
-Если у вас есть конкретные вопросы о каких-либо частях кода или вы хотите более детальное объяснение, пожалуйста, дайте знать!
+This assembly code performs functions for establishing a connection, waiting for packets, processing them, and transmitting them using the IPX and SPX network protocols. It demonstrates low-level operations, which require a good understanding of processor architecture and memory management.

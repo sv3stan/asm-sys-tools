@@ -8,11 +8,11 @@ ncb                     DB 64 DUP(0)
 networknamenumber       DB 0
 ;--------------------------------------------------------------------
 group_NAME 		DB                    '  Sergey Tristan'
-load_nb			DB 'è‡Æ‚Æ™Æ´  NetBios  „·‚†≠Æ¢´•≠.'
-unload_nb     		DB 'è‡Æ‚Æ™Æ´  NetBios  ≠•„·‚†≠Æ¢´•≠.'
-error_30h               DB 'î„≠™Ê®Ô 30h ØÆ´Ô CCode ® FinalCCode'
-error_31h               DB 'î„≠™Ê®Ô 31h ØÆ´Ô CCode ® FinalCCode'
-error_20h               DB 'î„≠™Ê®Ô 20h ØÆ´Ô CCode ® FinalCCode'
+load_nb			DB '–ü—Ä–æ—Ç–æ–∫–æ–ª  NetBios  —É—Å—Ç–∞–Ω–æ–≤–ª–µ–Ω.'
+unload_nb     		DB '–ü—Ä–æ—Ç–æ–∫–æ–ª  NetBios  –Ω–µ—É—Å—Ç–∞–Ω–æ–≤–ª–µ–Ω.'
+error_30h               DB '–§—É–Ω–∫—Ü–∏—è 30h –ø–æ–ª—è CCode –∏ FinalCCode'
+error_31h               DB '–§—É–Ω–∫—Ü–∏—è 31h –ø–æ–ª—è CCode –∏ FinalCCode'
+error_20h               DB '–§—É–Ω–∫—Ü–∏—è 20h –ø–æ–ª—è CCode –∏ FinalCCode'
 ;--------------------------------------------------------------------
 wait        		DB 0
 hex                     DB 4 DUP(48)
@@ -112,12 +112,12 @@ STC
 RET
 load_netbios ENDP
 NB_addgroupname PROC
-CMP  wait,0				;Ø†‡†¨•‚‡Î: ¢ DX †§‡•· Ø•‡•¨•≠
-JNE  nb_agn_1				;≠Æ© ·Æ§•‡¶†È•© ®¨Ô §´Ô §Æ°†¢´•≠®Ô
+CMP  wait,0				;–ø–∞—Ä–∞–º–µ—Ç—Ä—ã: –≤ DX –∞–¥—Ä–µ—Å –ø–µ—Ä–µ–º–µ–Ω
+JNE  nb_agn_1				;–Ω–æ–π —Å–æ–¥–µ—Ä–∂–∞—â–µ–π –∏–º—è –¥–ª—è –¥–æ–±–∞–≤–ª–µ–Ω–∏—è
 MOV  AH,030h
-MOV  SI[0],AH				;¢ WAIT ‰´†£ ¶§†‚Ï ®´® ≠•‚
-JMP  nb_agn_2				;0 · Æ¶®§†®•¨ - 1 °•ß Æ¶®§†≠®Ô
-nb_agn_1:				;¢ SI †§‡•· NCB
+MOV  SI[0],AH				;–≤ WAIT —Ñ–ª–∞–≥ –∂–¥–∞—Ç—å –∏–ª–∏ –Ω–µ—Ç
+JMP  nb_agn_2				;0 —Å –æ–∂–∏–¥–∞–∏–µ–º - 1 –±–µ–∑ –æ–∂–∏–¥–∞–Ω–∏—è
+nb_agn_1:				;–≤ SI –∞–¥—Ä–µ—Å NCB
 MOV  AH,0b0h
 MOV  SI[0],AH
 nb_agn_2:
@@ -144,11 +144,11 @@ MOV  networknamenumber,AL
 RET
 NB_addgroupname ENDP
 nb_deletename PROC
-CMP  wait,0				;Ø†‡†¨•‚‡Î: ¢ SI †§‡•· Ø•‡•¨•≠
+CMP  wait,0				;–ø–∞—Ä–∞–º–µ—Ç—Ä—ã: –≤ SI –∞–¥—Ä–µ—Å –ø–µ—Ä–µ–º–µ–Ω
 JNE  nb_dn_1
-MOV  AH,031h				;≠Æ© ·Æ§•‡¶†È•© ®¨Ô §´Ô „§†´•≠®Ô
-MOV  SI[0],AH	 			;¢ WAIT ‰´†£ ¶§†‚Ï ®´® ≠•‚
-JMP  nb_dn_2				;0 · Æ¶®§†®•¨ - 1 °•ß Æ¶®§†≠®Ô
+MOV  AH,031h				;–Ω–æ–π —Å–æ–¥–µ—Ä–∂–∞—â–µ–π –∏–º—è –¥–ª—è —É–¥–∞–ª–µ–Ω–∏—è
+MOV  SI[0],AH	 			;–≤ WAIT —Ñ–ª–∞–≥ –∂–¥–∞—Ç—å –∏–ª–∏ –Ω–µ—Ç
+JMP  nb_dn_2				;0 —Å –æ–∂–∏–¥–∞–∏–µ–º - 1 –±–µ–∑ –æ–∂–∏–¥–∞–Ω–∏—è
 nb_dn_1:
 MOV  AH,0b1h
 MOV  SI[0],AH
@@ -171,11 +171,11 @@ INT  5ch
 RET
 nb_deletename ENDP
 nb_senddatagram PROC
-CMP  wait,0				;Ø†‡†¨•‚‡Î: ¢ SI †§‡•· Ø•‡•¨•≠
+CMP  wait,0				;–ø–∞—Ä–∞–º–µ—Ç—Ä—ã: –≤ SI –∞–¥—Ä–µ—Å –ø–µ—Ä–µ–º–µ–Ω
 JNE  nb_sn_1
-MOV  AH,020h				;≠Æ© ·Æ§•‡¶†È•© ®¨Ô §´Ô „§†´•≠®Ô
-MOV  SI[0],AH				;¢ WAIT ‰´†£ ¶§†‚Ï ®´® ≠•‚
-JMP  nb_sn_2				;0 · Æ¶®§†®•¨ - 1 °•ß Æ¶®§†≠®Ô
+MOV  AH,020h				;–Ω–æ–π —Å–æ–¥–µ—Ä–∂–∞—â–µ–π –∏–º—è –¥–ª—è —É–¥–∞–ª–µ–Ω–∏—è
+MOV  SI[0],AH				;–≤ WAIT —Ñ–ª–∞–≥ –∂–¥–∞—Ç—å –∏–ª–∏ –Ω–µ—Ç
+JMP  nb_sn_2				;0 —Å –æ–∂–∏–¥–∞–∏–µ–º - 1 –±–µ–∑ –æ–∂–∏–¥–∞–Ω–∏—è
 nb_sn_1:
 MOV  AH,0a0h
 MOV  SI[0],AH

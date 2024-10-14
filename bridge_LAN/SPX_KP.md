@@ -1,110 +1,112 @@
-Код на ассемблере для DOS, предназначен для работы с сетевыми протоколами IPX (Internetwork Packet Exchange) и SPX (Sequenced Packet Exchange). Он реализует клиент-серверное взаимодействие, позволяя передавать файлы между двумя узлами сети с использованием этих протоколов. Ниже представлено более подробное описание структуры программы и её функциональности.
+﻿Here’s the English translation of your description of the assembly code for DOS that works with IPX (Internetwork Packet Exchange) and SPX (Sequenced Packet Exchange) network protocols:
 
-### Цели и назначение
+---
 
-Программа выполняет следующие задачи:
+The code is written in assembly language for DOS and is designed to work with IPX (Internetwork Packet Exchange) and SPX (Sequenced Packet Exchange) network protocols. It implements client-server interaction, allowing file transfers between two nodes in a network using these protocols. Below is a detailed description of the program's structure and functionality.
 
-1. **Загрузка драйверов IPX и SPX**: Программа проверяет наличие установленных драйверов IPX и SPX. Если драйверы не установлены, программа выводит соответствующее сообщение об ошибке и завершает работу.
+### Goals and Purpose
 
-2. **Запрос имени файла**: Пользователь вводит имя файла, который он хочет отправить через сеть. Программа проверяет существование файла и его доступность для передачи.
+The program performs the following tasks:
 
-3. **Передача файла**: Если файл существует, программа инициирует процесс передачи, отправляя пакет с данными файла к другому узлу в сети.
+1. **Loading IPX and SPX Drivers**: The program checks for the presence of installed IPX and SPX drivers. If the drivers are not installed, it displays an error message and terminates.
 
-4. **Прием данных**: Программа принимает пакеты данных от другого узла и записывает их в файл на локальной машине.
+2. **Requesting File Name**: The user inputs the name of the file they want to send over the network. The program checks for the existence of the file and its availability for transfer.
 
-5. **Обработка ошибок**: В ходе работы программа отслеживает и обрабатывает различные ошибки, которые могут возникнуть при взаимодействии с драйверами или при передаче данных.
+3. **File Transfer**: If the file exists, the program initiates the transfer process, sending a packet containing the file data to another node in the network.
 
-### Общая структура
+4. **Receiving Data**: The program accepts data packets from another node and writes them to a file on the local machine.
 
-1. **Сегменты и Данные**:
-   - Определены сегменты, переменные и буферы для хранения данных, такие как `comspec`, `filename`, `buffer` и другие.
-   - Данные, связанные с SPX, такие как версии драйвера и сообщения об ошибках, также объявлены.
+5. **Error Handling**: Throughout its operation, the program tracks and manages various errors that may occur while interacting with the drivers or during data transfer.
 
-2. **Процедуры**:
-   - Определены несколько процедур, например, `OUT_date`, `ipx_load`, `creat_file`, `open_file`, `write_file`, и другие, которые выполняют определенные задачи, такие как вывод даты, загрузка драйвера IPX, создание и открытие файлов.
+### Overall Structure
 
-3. **Основной поток выполнения**:
-   - Программа начинается с перехода в метку `start`, где происходит загрузка драйвера IPX и проверка статуса подключения.
-   - При успешной проверке происходит создание и отправка запроса на файл, а затем ожидание ответа.
+1. **Segments and Data**:
+   - Segments, variables, and buffers are defined for storing data, such as `comspec`, `filename`, `buffer`, and others.
+   - Data related to SPX, such as driver versions and error messages, are also declared.
 
-### Основные компоненты программы
+2. **Procedures**:
+   - Several procedures are defined, such as `OUT_date`, `ipx_load`, `creat_file`, `open_file`, `write_file`, and others, performing specific tasks like displaying the date, loading the IPX driver, creating and opening files.
 
-- **Данные и переменные**: Программа определяет несколько сегментов данных для хранения переменных, таких как имена файлов, буферы для передачи данных и флаги ошибок.
+3. **Main Execution Flow**:
+   - The program begins by jumping to the `start` label, where it loads the IPX driver and checks the connection status.
+   - Upon successful verification, it creates and sends a file request and then waits for a response.
 
-- **Подпрограммы (процедуры)**:
-  - **`ipx_load`**: Загружает драйвер IPX и проверяет его статус.
-  - **`comstroc`**: Обрабатывает ввод имени файла от пользователя.
-  - **`open_file` и `creat_file`**: Отвечают за открытие и создание файлов для чтения и записи данных.
-  - **`ipx_send`**: Отвечает за отправку пакетов данных через IPX.
-  - **`write_file`**: Записывает полученные данные в файл.
+### Key Components of the Program
 
-### Описание работы программы
+- **Data and Variables**: The program defines several data segments to store variables such as file names, buffers for data transfer, and error flags.
 
-1. **Инициализация**:
-   - Программа начинает с вызова процедуры для загрузки драйвера IPX и проверки его наличия. Если драйвер не загружен, программа выводит сообщение об ошибке и завершает работу.
+- **Subroutines (Procedures)**:
+  - **`ipx_load`**: Loads the IPX driver and checks its status.
+  - **`comstroc`**: Handles user input for the file name.
+  - **`open_file` and `creat_file`**: Responsible for opening and creating files for reading and writing data.
+  - **`ipx_send`**: Manages sending data packets via IPX.
+  - **`write_file`**: Writes the received data to a file.
 
-2. **Получение имени файла**:
-   - Программа вызывает процедуру `comstroc`, которая запрашивает у пользователя имя файла, который он хочет отправить. Введенное имя сохраняется в переменной.
+### Program Operation Description
 
-3. **Создание сокетов**:
-   - Программа создает два сокета — один для IPX и один для SPX, которые будут использоваться для передачи данных.
+1. **Initialization**:
+   - The program starts by calling the procedure to load the IPX driver and check its presence. If the driver is not loaded, it displays an error message and terminates.
 
-4. **Передача данных**:
-   - Если файл существует, программа отправляет запрос на его передачу, а затем слушает входящие пакеты, используя процедуру `ipx_send` для отправки данных.
+2. **Getting the File Name**:
+   - The program calls the `comstroc` procedure, which prompts the user for the file name they want to send. The entered name is stored in a variable.
 
-5. **Прием данных**:
-   - Программа принимает данные с помощью процедуры `ipx_listen`, которая слушает входящие пакеты и записывает полученные данные в файл на локальной машине.
+3. **Creating Sockets**:
+   - The program creates two sockets—one for IPX and one for SPX—that will be used for data transfer.
 
-6. **Обработка ошибок**:
-   - В процессе выполнения программы предусмотрена обработка различных ошибок, которые могут возникать, например, при недоступности файла, ошибках в сети и т.д.
+4. **Data Transfer**:
+   - If the file exists, the program sends a request for its transfer and then listens for incoming packets, using the `ipx_send` procedure to send the data.
 
-7. **Завершение работы**:
-   - По завершении передачи и записи данных программа корректно закрывает сокеты и завершается.
+5. **Receiving Data**:
+   - The program receives data using the `ipx_listen` procedure, which listens for incoming packets and writes the received data to a file on the local machine.
 
+6. **Error Handling**:
+   - The program includes error handling for various issues that may arise, such as file unavailability, network errors, etc.
 
-### Основные блоки кода
+7. **Termination**:
+   - After completing the transfer and writing data, the program properly closes the sockets and exits.
 
-- **Загрузка IPX**: 
+### Main Code Blocks
+
+- **Loading IPX**:
   ```assembly
   CALL IPX_load
   JNC  well
   JMP  NEAR PTR quit
   ```
-  Этот блок проверяет, успешно ли загружен драйвер IPX.
+  This block checks if the IPX driver has been successfully loaded.
 
-- **Создание и отправка запроса**: 
+- **Creating and Sending Request**:
   ```assembly
   CALL comstroc
   ```
-  Вызов процедуры `comstroc`, чтобы создать имена файлов, после чего отправляется пакет через `ipx_send`.
+  Calls the `comstroc` procedure to create file names, after which a packet is sent via `ipx_send`.
 
-- **Прослушивание и приём пакетов**: 
+- **Listening and Receiving Packets**:
   ```assembly
   MOV  CX,2
   MOV  BX,512
   MOV  DX,OFFSET filename3
   CALL ipx_listen
   ```
-  Здесь программа ожидает получения пакета с файлом.
+  Here, the program waits to receive a packet with the file.
 
-- **Обработка ошибок**: 
+- **Error Handling**:
   ```assembly
   mov  bp,offset error_03h
   mov  si,offset ecb
   CALL waitings
   ```
-  Проверка ошибок во время отправки и приёма пакетов.
+  Checks for errors during the sending and receiving of packets.
 
-### Завершение работы
+### Program Termination
 
-Программа заканчивается с помощью:
+The program concludes with:
 ```assembly
 MOV  AH,4ch
 INT  21h
 ```
+These commands terminate the program and return control to the operating system.
 
-Эти команды завершат выполнение программы и вернут управление операционной системе.
+### Conclusion
 
-### Заключение
-
-Данная программа является примером использования низкоуровневых сетевых протоколов для передачи данных в среде DOS. Она иллюстрирует основные принципы работы с сетевыми сокетами и взаимодействия между клиентом и сервером, а также управление ошибками и обработку пользовательского ввода.Ваш код на ассемблере выглядит как довольно сложная программа для работы с протоколами IPX и SPX. Давайте разберём основные его элементы и функциональность. 
+This program exemplifies the use of low-level network protocols for data transfer in a DOS environment. It illustrates the fundamental principles of working with network sockets and client-server interaction, as well as error management and user input handling.
